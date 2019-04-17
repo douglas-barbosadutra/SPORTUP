@@ -10,8 +10,7 @@ import it.contrader.main.ConnectionSingleton;
 
 public class LoginDAO {
 
-    private final String QUERY_LOGIN = "select * from users where user_user = ?";
-    
+    private final String QUERY_LOGIN = "select * from user where name = ? AND password = ?";
     /**
      * 
      * @param username
@@ -24,13 +23,14 @@ public class LoginDAO {
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_LOGIN);
             statement.setString(1, username);
+            statement.setString(2, password);
             
             String userType=null;
             ResultSet rs;
             if(statement.executeQuery().next()) {
             	rs = statement.executeQuery();
             	rs.next();
-            	userType = rs.getString("user_type");
+            	userType = rs.getString("type");
             }
             
             return userType;

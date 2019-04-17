@@ -11,12 +11,12 @@ import it.contrader.model.User;
 
 public class UserDAO {
 
-	private final String QUERY_ALL = "select * from users";
-	private final String QUERY_INSERT = "insert into users (user_user, user_type) values (?,?)";
-	private final String QUERY_READ = "select * from users where user_id=?";
+	private final String QUERY_ALL = "select * from user";
+	private final String QUERY_INSERT = "insert into user (name, type) values (?,?)";
+	private final String QUERY_READ = "select * from user where id_user=?";
 
-	private final String QUERY_UPDATE = "UPDATE users SET user_user=?, user_type=? WHERE user_id=?";
-	private final String QUERY_DELETE = "delete from user where user_id=?";
+	private final String QUERY_UPDATE = "UPDATE user SET name=?, type=? WHERE id_user=?";
+	private final String QUERY_DELETE = "delete from user where id_user=?";
 
 	public UserDAO() {
 
@@ -30,9 +30,9 @@ public class UserDAO {
 			ResultSet resultSet = statement.executeQuery(QUERY_ALL);
 			User user;
 			while (resultSet.next()) {
-				int userId = resultSet.getInt("user_id");
-				String username = resultSet.getString("user_user");
-				String usertype = resultSet.getString("user_type");
+				int userId = resultSet.getInt("id_user");
+				String username = resultSet.getString("name");
+				String usertype = resultSet.getString("type");
 				user = new User(username, usertype);
 				user.setUserId(userId);
 				usersList.add(user);
@@ -67,10 +67,10 @@ public class UserDAO {
 			resultSet.next();
 			String username, password, usertype;
 
-			username = resultSet.getString("user_user");
-			usertype = resultSet.getString("user_type");
+			username = resultSet.getString("name");
+			usertype = resultSet.getString("type");
 			User user = new User(username, usertype);
-			user.setUserId(resultSet.getInt("user_id"));
+			user.setUserId(resultSet.getInt("id_user"));
 
 			return user;
 		} catch (SQLException e) {

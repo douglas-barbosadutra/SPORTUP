@@ -38,11 +38,11 @@ public class MainDispatcher {
 		oggettoView.showResults(request);
 		oggettoView.showOptions();
 		oggettoView.submit();
-		try {
+		/*try {
 			Runtime.getRuntime().exec("clear");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 }
