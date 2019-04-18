@@ -9,7 +9,7 @@ import java.util.Scanner;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 
-public class HomeAdminView implements View {
+public class HomeTrainerView implements View {
 
     private String choice;
 
@@ -21,13 +21,13 @@ public class HomeAdminView implements View {
     public void showOptions() {
         System.out.println("-------MENU-------\n");
         System.out.println("Select what you want to manage:");
-        System.out.println("[U]sers [E]xit");
+        System.out.println("[T]rainings [E]xit");
         this.choice = this.getInput();
     }
 
     public void submit() {
-        if (choice.equalsIgnoreCase("U")) {
-        	MainDispatcher.getInstance().callView("User", null);
+        if (choice.equalsIgnoreCase("T")) {
+        	MainDispatcher.getInstance().callView("Training", null);
         }
         
         if (choice.equalsIgnoreCase("E"))

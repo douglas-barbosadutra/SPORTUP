@@ -5,17 +5,19 @@ import java.util.Scanner;
 
 import it.contrader.controller.Request;
 import it.contrader.controller.UserController;
+import it.contrader.controller.TrainingController;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
+import it.contrader.model.Training;
 
-public class UserView implements View {
+public class TrainingView implements View {
 
-	private UserController usersController;
+	private TrainingController trainingController;
 	private Request request;
 	private String choice;
 	
-	public UserView() {
-		this.usersController = new UserController();
+	public TrainingView() {
+		this.trainingController = new TrainingController();
 	}
 
 	@Override
@@ -25,17 +27,17 @@ public class UserView implements View {
 	@Override
 	public void showOptions() {
 		
-		System.out.println("\n------ Gestione utenti -------\n");
+		System.out.println("\n------ Trainings Menu -------\n");
 		
-		System.out.println("ID\tUsername\tTipoUtente");
+		System.out.println("ID\tType");
 		System.out.print("------------------------------------------------------");
-		List<User> users = usersController.getAllUser();
+		List<Training> trainings = trainingController.getAllTraining();
 		System.out.println();
-		users.forEach(user -> System.out.println(user.toString()));
+		trainings.forEach(training -> System.out.println(training.toString()));
 		System.out.println();
 		
 		System.out.println("Select operation:");
-		System.out.println("[S]et Type [D]elete [E]xit");
+		System.out.println("[C]reate [M]odify [D]elete [A]ssign [B]ack [E]xit");
 		try {
 			this.choice = getInput();
 		} catch(Exception e) {
@@ -54,7 +56,7 @@ public class UserView implements View {
 
 	@Override
 	public void submit() {
-		    MainDispatcher.getInstance().callAction("User", "doControl", this.request);
+		    MainDispatcher.getInstance().callAction("Training", "doControl", this.request);
 	}
 
 }
