@@ -40,8 +40,7 @@ public class HomeController implements Controller {
     	}
 	    if(request.get("mode").equals("register")){
 	    	if (request != null) {
-	    		System.out.println("ciao");
-	            String nomeUtente = request.get("username").toString();
+	    		String nomeUtente = request.get("username").toString();
 	            String password = request.get("password").toString();
 	            int id_user = (int) request.get("id");
 	            

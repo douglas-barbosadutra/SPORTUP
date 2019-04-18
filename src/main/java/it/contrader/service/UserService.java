@@ -35,5 +35,9 @@ public class UserService {
 		return this.userDAO.deleteUser(userId);
 	}
 	
+	public boolean setUserRights(int userId, String userType) {
+		return this.userDAO.setUserRights(userId, userType);
+	}
+	
 	
 }

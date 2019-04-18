@@ -36,6 +36,10 @@ public class UserController implements Controller {
 	public boolean deleteUser(Integer usersId) {
 		return this.usersService.deleteUser(usersId);
 	}
+	
+	public boolean setUserRights(Integer usersId, String userType) {
+		return this.usersService.setUserRights(usersId, userType);
+	}
 
 	@Override
 	public void doControl(Request request) {
@@ -46,16 +50,10 @@ public class UserController implements Controller {
 			MainDispatcher.getInstance().callView("User", null);
 		} else {
 			switch (choice.toUpperCase()) {
-			case "L":
-				MainDispatcher.getInstance().callView(sub_package + "UserRead", null);
+			case "S":
+				MainDispatcher.getInstance().callView(sub_package + "UserRights", null);
 				break;
-			case "I":
-				MainDispatcher.getInstance().callView(sub_package + "UserInsert", null);
-				break;
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "UserUpdate", null);
-				break;
-			case "C":
+			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "UserDelete", null);
 				break;
 			case "E":

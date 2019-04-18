@@ -15,6 +15,7 @@ public class MainDispatcher {
 
 	private static MainDispatcher instance;
 
+	
 	public static MainDispatcher getInstance() {
 		if (instance == null) {
 			instance = new MainDispatcher();

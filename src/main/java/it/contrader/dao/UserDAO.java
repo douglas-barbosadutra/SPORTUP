@@ -14,6 +14,7 @@ public class UserDAO {
 	private final String QUERY_ALL = "select * from user";
 	private final String QUERY_INSERT = "insert into user (name, type) values (?,?)";
 	private final String QUERY_READ = "select * from user where id_user=?";
+	private final String QUERY_RIGHTS = "update user set type = ? where id_user = ?";
 
 	private final String QUERY_UPDATE = "UPDATE user SET name=?, type=? WHERE id_user=?";
 	private final String QUERY_DELETE = "delete from user where id_user=?";
@@ -132,4 +133,34 @@ public class UserDAO {
 		}
 		return false;
 	}
+	
+	public boolean setUserRights(int userId, String userType) {
+		
+		String type;
+		Connection connection = ConnectionSingleton.getInstance();
+
+		// Check if id is present
+		if (userId == 0)
+			return false;
+		
+		// Check user type
+		if (userType.equals("P")) type = "player";
+		else if (userType.equals("T")) type = "trainer";
+		else return false;
+		
+		System.out.println(userId + userType);
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_RIGHTS);
+			preparedStatement.setInt(2, userId);
+			preparedStatement.setString(1, type);
+			boolean n = preparedStatement.execute();
+			if (n)
+				return true;
+		} catch (SQLException e) {
+		}
+		return false;
+		
+	}
+
 }
