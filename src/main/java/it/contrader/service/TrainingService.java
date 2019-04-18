@@ -35,8 +35,8 @@ public class TrainingService {
 		return this.userDAO.updateUser(ConverterUser.toEntity(userDTO));
 	}
 	
-	public boolean deleteUser(int userId) {
-		return this.userDAO.deleteUser(userId);
+	public boolean deleteTraining(int trainingId) {
+		return this.trainingDAO.deleteTraining(trainingId);
 	}
 	
 	public boolean setUserRights(int userId, String userType) {

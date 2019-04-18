@@ -18,7 +18,7 @@ public class TrainingDAO {
 	private final String QUERY_RIGHTS = "update user set type = ? where id_user = ?";
 
 	private final String QUERY_UPDATE = "UPDATE user SET name=?, type=? WHERE id_user=?";
-	private final String QUERY_DELETE = "delete from user where id_user=?";
+	private final String QUERY_DELETE = "delete from training where id_training=?";
 	private final String QUERY_LAST_ID = "select max(id_training) as id_training from training";
 	
 	
@@ -140,7 +140,7 @@ public class TrainingDAO {
 		
 	}
 
-	public boolean deleteUser(Integer id) {
+	public boolean deleteTraining(Integer id) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_DELETE);

@@ -39,8 +39,8 @@ public class TrainingController implements Controller {
 		return this.usersService.updateUser(usersDTO);
 	}
 
-	public boolean deleteUser(Integer usersId) {
-		return this.usersService.deleteUser(usersId);
+	public boolean deleteTraining(Integer trainingId) {
+		return this.trainingService.deleteTraining(trainingId);
 	}
 	
 	public boolean setUserRights(Integer usersId, String userType) {
