@@ -141,7 +141,6 @@ public class UserDAO {
 
 		// Check if id is present
 		if (userId == 0)
-			
 			return false;
 		
 		// Check user type
