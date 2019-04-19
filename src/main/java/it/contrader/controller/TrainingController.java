@@ -47,6 +47,15 @@ public class TrainingController implements Controller {
 		return this.usersService.setUserRights(usersId, userType);
 	}
 
+	public boolean updateTraining(TrainingDTO trainingsDTO) {
+		return this.trainingService.updateTraining(trainingsDTO);
+	}
+	
+	public boolean assignTraining(TrainingDTO trainingsDTO) {
+		return this.trainingService.assignTraining(trainingsDTO);
+	}
+	
+	
 	@Override
 	public void doControl(Request request) {
 		String mode = (String) request.get("mode");
@@ -59,8 +68,8 @@ public class TrainingController implements Controller {
 			case "C":
 				MainDispatcher.getInstance().callView(sub_package + "TrainingCreate", null);
 				break;
-			case "M":
-				MainDispatcher.getInstance().callView(sub_package + "TrainingModify", null);
+			case "U":
+				MainDispatcher.getInstance().callView(sub_package + "TrainingUpdate", null);
 				break;
 			case "D":
 				MainDispatcher.getInstance().callView(sub_package + "TrainingDelete", null);

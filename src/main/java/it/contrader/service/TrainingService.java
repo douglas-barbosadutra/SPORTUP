@@ -35,6 +35,9 @@ public class TrainingService {
 		return this.userDAO.updateUser(ConverterUser.toEntity(userDTO));
 	}
 	
+	public boolean updateTraining(TrainingDTO trainingDTO) {
+		return this.trainingDAO.updateTraining(ConverterTraining.toEntity(trainingDTO));
+	}
 	public boolean deleteTraining(int trainingId) {
 		return this.trainingDAO.deleteTraining(trainingId);
 	}
@@ -43,4 +46,8 @@ public class TrainingService {
 		return this.userDAO.setUserRights(userId, userType);
 	}
 		
+	public boolean assignTraining(TrainingDTO trainingDTO) {
+		return this.trainingDAO.assignTraining(ConverterTraining.toEntity(trainingDTO));
+	}
+	
 }

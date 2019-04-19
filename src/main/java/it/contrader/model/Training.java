@@ -3,6 +3,7 @@ package it.contrader.model;
 public class Training {
 	private int trainingId;
 	private String info;
+	private int id_player;
 
 	public Training() {
 	}
@@ -26,7 +27,15 @@ public class Training {
 	public String getInfo() {
 		return info;
 	}
+	
+	public int getPlayerId() {
+		return id_player;
+	}
 
+	public void setPlayerId(int playerId) {
+		this.id_player = playerId;
+	}
+	
 	@Override
 	public String toString() {
 		return this.getTrainingId() + "\t" + this.getInfo();

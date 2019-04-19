@@ -37,7 +37,8 @@ public class TrainingView implements View {
 		System.out.println();
 		
 		System.out.println("Select operation:");
-		System.out.println("[C]reate [M]odify [D]elete [A]ssign [B]ack [E]xit");
+		System.out.println("[C]reate [U]pdate"
+				+ " [D]elete [A]ssign [B]ack [E]xit");
 		try {
 			this.choice = getInput();
 		} catch(Exception e) {

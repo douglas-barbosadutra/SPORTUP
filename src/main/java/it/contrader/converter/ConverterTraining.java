@@ -24,6 +24,7 @@ public class ConverterTraining {
 			training = new Training();
 			training.setTrainingId(trainingDTO.getTrainingId());
 			training.setInfo(trainingDTO.getInfo());
+			training.setPlayerId(trainingDTO.getPlayerId());
 		}
 		return training;
 	}
