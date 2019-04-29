@@ -1,5 +1,6 @@
 package it.contrader.service;
 
+import it.contrader.controller.Request;
 import it.contrader.dao.LoginDAO;
 
 public class LoginService {
@@ -10,7 +11,8 @@ public class LoginService {
         this.loginDAO = new LoginDAO();
     }
 
-    public String login (String username, String password) {
-        return this.loginDAO.login(username, password);
+    public Request login (String username, String password) {
+    	return this.loginDAO.login(username, password);
+        
     }
 }

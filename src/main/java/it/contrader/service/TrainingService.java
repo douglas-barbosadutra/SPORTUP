@@ -3,6 +3,7 @@ package it.contrader.service;
 import java.util.List;
 
 import it.contrader.converter.ConverterUser;
+import it.contrader.controller.Request;
 import it.contrader.converter.ConverterTraining;
 import it.contrader.dao.TrainingDAO;
 import it.contrader.dto.TrainingDTO;
@@ -48,6 +49,10 @@ public class TrainingService {
 		
 	public boolean assignTraining(TrainingDTO trainingDTO) {
 		return this.trainingDAO.assignTraining(ConverterTraining.toEntity(trainingDTO));
+	}
+	
+	public Request getPlayerTraining(Request request) {
+		return this.trainingDAO.getPlayerTraining(request);
 	}
 	
 }

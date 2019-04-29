@@ -5,7 +5,9 @@ import java.util.List;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
+import it.contrader.model.Team;
 import it.contrader.service.UserService;
+import it.contrader.model.Player;
 
 public class UserController implements Controller {
 
@@ -19,6 +21,14 @@ public class UserController implements Controller {
 
 	public List<User> getAllUser() {
 		return this.usersService.getAllUser();
+	}
+	
+	public List<Player> getAllPlayerTraining() {
+		return this.usersService.getAllPlayerTraining();
+	}
+	
+	public List<Player> getAllPlayerTeam(Team team) {
+		return this.usersService.getAllPlayerTeam(team);
 	}
 
 	public UserDTO readUser(int userId) {
@@ -40,7 +50,15 @@ public class UserController implements Controller {
 	public boolean setUserRights(Integer usersId, String userType) {
 		return this.usersService.setUserRights(usersId, userType);
 	}
-
+	
+	public boolean addPlayerInfo(int userId, String player_info) {
+		return this.usersService.addPlayerInfo(userId, player_info);	
+	}
+	
+	public Player getPlayerInfo(int userId) {
+		return this.usersService.getPlayerInfo(userId);	
+	}
+	
 	@Override
 	public void doControl(Request request) {
 		String mode = (String) request.get("mode");

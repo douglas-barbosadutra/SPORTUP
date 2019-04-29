@@ -21,17 +21,17 @@ public class HomeTrainerView implements View {
     public void showOptions() {
         System.out.println("-------MENU-------\n");
         System.out.println("Select what you want to manage:");
-        System.out.println("[T]rainings [E]xit");
+        System.out.println("[T]rainings [Te]am [E]xit");
         this.choice = this.getInput();
     }
 
     public void submit() {
-        if (choice.equalsIgnoreCase("T")) {
+        if (choice.equalsIgnoreCase("T")) 
         	MainDispatcher.getInstance().callView("Training", null);
-        }
-        
+        if (choice.equalsIgnoreCase("Te")) 
+        	MainDispatcher.getInstance().callView("Team", null);
         if (choice.equalsIgnoreCase("E"))
-            MainDispatcher.getInstance().callAction("Login", "doControl", null);
+        	MainDispatcher.getInstance().callView("Menu", null);
         else {
             Request request = new Request();
             request.put("choice", choice);

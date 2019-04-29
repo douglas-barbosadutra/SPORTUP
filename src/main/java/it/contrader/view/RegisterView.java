@@ -7,7 +7,6 @@ import it.contrader.main.MainDispatcher;
 
 public class RegisterView implements View {
 
-	private int id_user;
 	private String nomeUtente;
 	private String password;
 
@@ -23,13 +22,10 @@ public class RegisterView implements View {
 		nomeUtente = getInput();
 		System.out.println("Password:");
 		password = getInput();
-		System.out.println("ID:");
-		id_user = scanner.nextInt();
 	}
 
 	public void submit() {
 		Request request = new Request();
-		request.put("id", id_user);
 		request.put("username", nomeUtente);
 		request.put("password", password);
 		request.put("mode", "register");

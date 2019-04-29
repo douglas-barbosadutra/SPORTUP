@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Vector;
 
 import it.contrader.controller.GestoreEccezioni;
+import it.contrader.controller.Request;
 import it.contrader.main.ConnectionSingleton;
 import it.contrader.model.User;
 import it.contrader.model.Training;
@@ -13,7 +14,7 @@ import it.contrader.model.Training;
 public class TrainingDAO {
 
 	private final String QUERY_ALL = "select * from training";
-	private final String QUERY_INSERT = "insert into training (id_training, info) values (?,?)";
+	private final String QUERY_INSERT = "insert into training (info) values (?)";
 	private final String QUERY_READ = "select * from training where id_training=?";
 	private final String QUERY_RIGHTS = "update user set type = ? where id_user = ?";
 
@@ -23,6 +24,13 @@ public class TrainingDAO {
 
 	private final String QUERY_LAST_ID = "select max(id_training) as id_training from training";
 	private final String QUERY_ASSIGNTRAINING = "update player SET id_training=? WHERE id_user=?";
+	private final String QUERY_CHECK_ID_TRAINING = "select id_training from training where id_training=?";
+	private final String QUERY_GET_PLAYER_TRAINING = "select training.info\n" +
+													 "from training\n" +
+													 "join player\n" + 
+													 "on training.id_training = player.id_training\n" +
+													 "where player.id_user = ?\n";
+
 
 	
 	
@@ -36,7 +44,6 @@ public class TrainingDAO {
 		try {
 			Statement statement = connection.createStatement();
 			ResultSet resultSet = statement.executeQuery(QUERY_LAST_ID);
-			System.out.println("adsf");
 			resultSet.next();
 			lastID = resultSet.getInt("id_training");
 		} catch (SQLException e) {
@@ -68,10 +75,10 @@ public class TrainingDAO {
 	public boolean createTraining(Training training) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
-			int training_id = getLastID() + 1;
+			//int training_id = getLastID() + 1;
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_INSERT);
-			preparedStatement.setInt(1, training_id);
-			preparedStatement.setString(2, training.getInfo());
+			//preparedStatement.setInt(1, training_id);
+			preparedStatement.setString(1, training.getInfo());
 			preparedStatement.execute();
 			return true;
 		} catch (SQLException e) {
@@ -144,37 +151,30 @@ public class TrainingDAO {
 	
 	public boolean assignTraining(Training trainingToAssign) {
 		Connection connection = ConnectionSingleton.getInstance();
-
-		// Check if id is present
-
-		//Training trainingRead = readTraining(trainingToAssign.getTrainingId());
-		//if (!trainingRead.equals(trainingToAssign)) {
+			
 			try {
-				// Fill the userToUpdate object
-	
+				// Check if id is present
+				PreparedStatement preparedStatement = connection.prepareStatement(QUERY_CHECK_ID_TRAINING);
+				preparedStatement.setInt(1, trainingToAssign.getTrainingId());
+				ResultSet resultSet = preparedStatement.executeQuery();
+								
+				if (!resultSet.next()) {
+					System.out.println("ERROR: Training not present!");
+					return false;
+				}
 				
 				// Update the user
-				System.out.println(trainingToAssign.getPlayerId()+trainingToAssign.getTrainingId());
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_ASSIGNTRAINING);
+				preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_ASSIGNTRAINING);
 				preparedStatement.setInt(2, trainingToAssign.getPlayerId());
 				preparedStatement.setInt(1, trainingToAssign.getTrainingId());
 
 				int a = preparedStatement.executeUpdate();
-				if (a > 0) {
-					System.out.println("true");
-					return true;
-				}
-				else {
-					System.out.println("false");
-					return false;
-				}
+				if (a > 0) return true;
+				else return false;
+				
 			} catch (SQLException e) {
 				return false;
-			}
-		//}
-
-		//return false;
-		
+			}		
 	}
 
 	
@@ -224,6 +224,19 @@ public class TrainingDAO {
 		}
 		return false;
 		
+	}
+	
+	public Request getPlayerTraining(Request request) {
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_GET_PLAYER_TRAINING);
+			preparedStatement.setInt(1, (int)request.get("id"));
+			ResultSet resultSet = preparedStatement.executeQuery();
+			resultSet.next();
+			request.put("info", resultSet.getString("info"));
+		} catch (SQLException e) {
+		}
+		return request;
 	}
 
 }

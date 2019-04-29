@@ -10,7 +10,7 @@ public class RegisterService {
         this.registerDAO = new RegisterDAO();
     }
 
-    public String register (int id, String username, String password) {
-        return this.registerDAO.register(id, username, password);
+    public String register (String username, String password) {
+        return this.registerDAO.register(username, password);
     }
 }

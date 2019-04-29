@@ -10,16 +10,15 @@ import it.contrader.main.ConnectionSingleton;
 
 public class RegisterDAO {
 
-    private final String QUERY_REGISTER = "INSERT INTO user (id_user, name, password) VALUES (?, ?, ?)";
+    private final String QUERY_REGISTER = "INSERT INTO user (name, password) VALUES (?, ?)";
     
-    public String register (int id, String username, String password) {
+    public String register(String username, String password) {
 
         Connection connection = ConnectionSingleton.getInstance();
         try {
             PreparedStatement statement = connection.prepareStatement(QUERY_REGISTER);
-            statement.setInt(1, id);
-            statement.setString(2, username);
-            statement.setString(3, password);
+            statement.setString(1, username);
+            statement.setString(2, password);
            
             String userType=null;
             ResultSet rs;

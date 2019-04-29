@@ -12,6 +12,7 @@ import it.contrader.main.MainDispatcher;
 public class HomeAdminView implements View {
 
     private String choice;
+    Request request;
 
     public void showResults(Request request) {
     	System.out.println("Welcome in SPORTUP "+request.get("nomeUtente").toString());
@@ -30,8 +31,10 @@ public class HomeAdminView implements View {
         	MainDispatcher.getInstance().callView("User", null);
         }
         
-        if (choice.equalsIgnoreCase("E"))
-            MainDispatcher.getInstance().callAction("Login", "doControl", null);
+        if (choice.equalsIgnoreCase("E")) {
+        	request = new Request();
+        	MainDispatcher.getInstance().callView("Menu", request);
+        }
         else {
             Request request = new Request();
             request.put("choice", choice);

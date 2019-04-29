@@ -30,7 +30,8 @@ public class UserDeleteView implements View {
 		String usersId = getInput();
 
 		if (usersId != null && StringUtils.isStrictlyNumeric(usersId)) {
-			userController.deleteUser(Integer.parseInt(usersId));
+			boolean r = userController.deleteUser(Integer.parseInt(usersId));
+			if(!r) System.out.println("ERROR: delete failed!");  
 			
 		} else {
 			System.out.println("Wrong Value!");
