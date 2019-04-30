@@ -3,14 +3,25 @@
 <title>Menu Principale</title>
 </head>
 <body>
-	<h1>Benvenuto: ${utente}</h1>
-	<h2>------- MENU ADMIN -------</h2>
+	
+	<h2>------- GESTIONE UTENTI  -------</h2>
 
-	<h3>1. COSA VUOI GESTIRE</h3>
-	<form action="adminUsers.jsp" method="post">
-		<button type="submit">Utenti</button>
+	<h3>1. COSA VUOI FARE</h3>
+	
+	<form action="LoginServlet" method="post">
+		<button type="submit" value="esempioManager" name="richiesta">
+			DELETE USER</button>
 	</form>
 	
+	<form action="LoginServlet" method="post">
+		<button type="submit" value="esempioManager" name="richiesta">
+			ASSIGN TYPE</button>
+	</form>
+	
+	<form action="LoginServlet" method="post">
+		<button type="submit" value="esempioManager" name="richiesta">
+			VIEW USERS</button>
+	</form>
 
 	<form action="LoginServlet" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">

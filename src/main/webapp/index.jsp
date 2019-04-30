@@ -3,6 +3,7 @@
 <title>Login Trader</title>
 </head>
 <body>
+	<h2>------- LOGIN -------</h2>
 	<div>
 		<form action="LoginServlet" method="post">
 			<h3>

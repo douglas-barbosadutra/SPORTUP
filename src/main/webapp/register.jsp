@@ -3,6 +3,7 @@
 <title>Register Trader</title>
 </head>
 <body>
+	<h2>------- REGISTRATION -------</h2>
 	<div>
 		<form action="RegisterServlet" method="post">
 			<h3>
