@@ -5,6 +5,7 @@ import java.util.List;
 
 import it.contrader.converter.ConverterUser;
 import it.contrader.dao.LoginDAO;
+import it.contrader.dao.RegisterDAO;
 import it.contrader.dao.UserDAO;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
@@ -19,10 +20,12 @@ public class UsersServiceDTO {
 
 	private final UserDAO usersDAO;
 	private final LoginDAO loginDAO;
+	private final RegisterDAO registerDAO;
 
 	public UsersServiceDTO() {
 		this.usersDAO = new UserDAO();
 		this.loginDAO = new LoginDAO();
+		this.registerDAO = new RegisterDAO();
 	}
 
 	/**
@@ -43,6 +46,10 @@ public class UsersServiceDTO {
 	
 	public Request login (String username, String password) {
 		return this.loginDAO.login(username, password);
+	}
+	
+	public String register (String username, String password) {
+		return this.registerDAO.register(username, password);
 	}
 	
 	/*public UserDTO getUserByUsernameAndPasword(String username, String password) {
