@@ -3,10 +3,12 @@ package it.contrader.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.contrader.converter.UsersConverter;
-import it.contrader.dao.UsersDAO;
-import it.contrader.dto.UsersDTO;
-import it.contrader.model.Users;
+import it.contrader.converter.ConverterUser;
+import it.contrader.dao.LoginDAO;
+import it.contrader.dao.UserDAO;
+import it.contrader.dto.UserDTO;
+import it.contrader.model.User;
+import it.contrader.utils.Request;
 
 /**
  * Classe che si occupa di interfacciarsi con la persistenza e recuperare
@@ -15,30 +17,36 @@ import it.contrader.model.Users;
  */
 public class UsersServiceDTO {
 
-	private final UsersDAO usersDAO;
+	private final UserDAO usersDAO;
+	private final LoginDAO loginDAO;
 
 	public UsersServiceDTO() {
-		this.usersDAO = new UsersDAO();
+		this.usersDAO = new UserDAO();
+		this.loginDAO = new LoginDAO();
 	}
 
 	/**
 	 * Come vediamo la lista recuperata è di tipo Esempio ma noi la convertiamo in EsempioDTO
 	 * Invito chi fa i converter a fare un metodo per convertire direttamente la lista senza farli uno ad uno perchè è sporco e poco efficiente
 	 */
-	public List<UsersDTO> getAllUsers() {
+	public List<UserDTO> getAllUsers() {
 
-		List<Users> list = usersDAO.getAllUsers();
-		List<UsersDTO> listDTO = new ArrayList<>();
+		List<User> list = usersDAO.getAllUser();
+		List<UserDTO> listDTO = new ArrayList<>();
 
-		for (Users users : list) {
-			listDTO.add(UsersConverter.toDTO(users));
+		for (User users : list) {
+			listDTO.add(ConverterUser.toDTO(users));
 		}
 
 		return listDTO;
 	}
 	
-	public UsersDTO getUserByUsernameAndPasword(String username, String password) {
-		return UsersConverter.toDTO(usersDAO.login(username, password));
+	public Request login (String username, String password) {
+		return this.loginDAO.login(username, password);
+	}
+	
+	/*public UserDTO getUserByUsernameAndPasword(String username, String password) {
+		return ConverterUser.toDTO(usersDAO.login(username, password));
 	}
 
 	public boolean updateUsers (UsersDTO usersDTO) {
@@ -55,7 +63,8 @@ public class UsersServiceDTO {
 		return this.usersDAO.insertUsers(UsersConverter.toEntity(usersDTO));
 	
 }
-		
+	*/
+	
 	
 	
 }

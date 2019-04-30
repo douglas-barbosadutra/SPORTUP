@@ -4,13 +4,20 @@
 </head>
 <body>
 	<h1>Benvenuto: ${utente}</h1>
-	<h2>------- MENU PRINCIPALE -------</h2>
+	<h2>------- MENU ADMIN -------</h2>
 
-	<h3>1. Esempio</h3>
+	<h3>1. COSA VUOI GESTIRE</h3>
+	<form action="MenuServlet" method="post">
+		<button type="submit" value="esempioManager" name="richiesta">
+			Utenti</button>
+	</form>
+	
+
 	<form action="LoginServlet" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">
-			bottone esempio</button>
+			Exit</button>
 	</form>
+	
 	<!--  
      <h3>2. Badges</h3>
      <form action="BadgeServlet" method="post">
