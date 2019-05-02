@@ -8,22 +8,21 @@
 
 	<h3>1. COSA VUOI FARE</h3>
 	
-	<form action="LoginServlet" method="post">
+	<form action="adminUsersDelete.jsp" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">
 			DELETE USER</button>
 	</form>
 	
-	<form action="LoginServlet" method="post">
+	<form action="adminAssignType.jsp" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">
 			ASSIGN TYPE</button>
 	</form>
 	
-	<form action="LoginServlet" method="post">
-		<button type="submit" value="esempioManager" name="richiesta">
-			VIEW USERS</button>
+	<form action="adminUsersView.jsp" method="post">
+		<button type="submit">VIEW USERS</button>
 	</form>
 
-	<form action="LoginServlet" method="post">
+	<form action="index.jsp" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">
 			Exit</button>
 	</form>

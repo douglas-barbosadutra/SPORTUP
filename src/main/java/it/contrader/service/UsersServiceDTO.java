@@ -52,6 +52,18 @@ public class UsersServiceDTO {
 		return this.registerDAO.register(username, password);
 	}
 	
+	public boolean delete (int id_user) {
+		return this.usersDAO.deleteUser(id_user);
+	}
+	
+	public List<User> getAllUser() {
+		return this.usersDAO.getAllUser();
+	}
+	
+	public boolean setUserRights(int userId, String userType) {
+		return this.usersDAO.setUserRights(userId, userType);
+	}
+	
 	/*public UserDTO getUserByUsernameAndPasword(String username, String password) {
 		return ConverterUser.toDTO(usersDAO.login(username, password));
 	}

@@ -76,6 +76,16 @@
 
 		</table>
 	</form>
+	
+	<form action="UsersServlet?richiesta=deleteUser" method="post">
+			<h3>
+				ID: <input type="text" id="user" name="id_user"
+					placeholder="inserisci id dell'utente">
+			</h3>
+			
+			<button type="submit" value="Delete" name="pulsante">DELETE</button>
+			
+		</form>
 
 	<form action="adminUsers.jsp" method="post">
 		<button type="submit">INDIETRO</button>

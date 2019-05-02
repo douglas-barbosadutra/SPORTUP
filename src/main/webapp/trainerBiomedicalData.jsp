@@ -3,17 +3,38 @@
 <title>Menu Principale</title>
 </head>
 <body>
-	<h1>Benvenuto: ${utente}</h1>
-	<h2>------- MENU ADMIN -------</h2>
+	
+	<h2>------- GESTIONE DATI BIOMEDICI -------</h2>
 
-	<h3>1. COSA VUOI GESTIRE</h3>
-	<form action="adminUsers.jsp" method="post">
-		<button type="submit">Utenti</button>
+	<h3>1. COSA VUOI FARE</h3>
+	
+	<form action="trainerBiomedicalDataView.jsp" method="post">
+		<button type="submit">
+			VIEW BIOMEDICAL DATA PLAYER</button>
 	</form>
 	
+	<form action="trainerBiomedicalDataInsert.jsp" method="post">
+		<button type="submit">
+			INSERT BIOMEDICAL DATA PLAYER</button>
+	</form>
+	
+	<form action="trainerBiomedicalDataUpdate.jsp" method="post">
+		<button type="submit">
+			UPDATE BIOMEDICAL DATA PLAYER</button>
+	</form>
+	
+	<form action="trainerBiomedicalDataDelete.jsp" method="post">
+		<button type="submit">
+			DELETE BIOMEDICAL DATA PLAYER</button>
+	</form>
 
+	<form action="homeTrainer.jsp" method="post">
+		<button type="submit">
+			Back</button>
+	</form>
+	
 	<form action="index.jsp" method="post">
-		<button type="submit" value="esempioManager" name="richiesta">
+		<button type="submit">
 			Exit</button>
 	</form>
 	

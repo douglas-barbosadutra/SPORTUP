@@ -21,6 +21,33 @@ import it.contrader.service.UsersServiceDTO;
  *
  */
 public class UsersServlet extends HttpServlet {
+	
+	private final UsersServiceDTO usersServiceDTO = new UsersServiceDTO();
+
+	@Override
+	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		final HttpSession session = request.getSession();
+		session.setAttribute("utente", null);
+
+		if (request != null) {
+//			System.out.println(request.getParameter("richiesta").toString());
+			if(request.getParameter("richiesta").toString().equals("deleteUser")) {
+				final int id_user = Integer.parseInt(request.getParameter("id_user"));
+				usersServiceDTO.delete(id_user);
+				getServletContext().getRequestDispatcher("/adminUsersDelete.jsp").forward(request, response);
+			}
+			else if(request.getParameter("richiesta").toString().equals("assignTypeTrainer")) { 
+    			usersServiceDTO.setUserRights(Integer.parseInt(request.getParameter("id_user")), "T");
+    			getServletContext().getRequestDispatcher("/adminUsersView.jsp").forward(request, response);
+			}
+			
+			else if(request.getParameter("richiesta").toString().equals("assignTypePlayer")) { 
+				usersServiceDTO.setUserRights(Integer.parseInt(request.getParameter("id_user")), "P");
+				getServletContext().getRequestDispatcher("/adminUsersView.jsp").forward(request, response);
+			}
+		}
+	}
 //
 //	private final UsersServiceDTO usersServiceDTO = new UsersServiceDTO();
 //	private List<UsersDTO> allUsers= new ArrayList<>();

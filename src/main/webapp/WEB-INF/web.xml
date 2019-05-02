@@ -19,8 +19,8 @@
 		<servlet-class>it.contrader.servlets.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet>
-		<servlet-name>NodesServlet</servlet-name>
-		<servlet-class>it.contrader.servlets.NodesServlet</servlet-class>
+		<servlet-name>UsersServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.UsersServlet</servlet-class>
 	</servlet>	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -35,8 +35,8 @@
 		<url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>NodesServlet</servlet-name>
-		<url-pattern>/NodesServlet</url-pattern>
+		<servlet-name>UsersServlet</servlet-name>
+		<url-pattern>/UsersServlet</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>4000</session-timeout>

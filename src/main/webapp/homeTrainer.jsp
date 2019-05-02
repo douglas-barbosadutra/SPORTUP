@@ -18,7 +18,14 @@
 			Team</button>
 	</form>
 	
-	<form action="LoginServlet" method="post">
+	<form action="trainerBiomedicalData.jsp" method="post">
+		<button type="submit" value="esempioManager" name="richiesta">
+			Biomedical Data</button>
+	</form>
+	
+
+	
+	<form action="index.jsp" method="post">
 		<button type="submit" value="esempioManager" name="richiesta">
 			Exit</button>
 	</form>
