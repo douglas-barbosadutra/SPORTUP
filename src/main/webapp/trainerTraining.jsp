@@ -3,30 +3,43 @@
 <title>Menu Principale</title>
 </head>
 <body>
-	<h1>Benvenuto: ${utente}</h1>
-	<h2>------- MENU TRAINER -------</h2>
+	
+	<h2>------- GESTIONE ALLENAMENTI -------</h2>
 
-	<h3>1. COSA VUOI GESTIRE</h3>
-	<form action="trainerTraining.jsp" method="post">
+	<h3>1. COSA VUOI FARE</h3>
+	
+	<form action="trainerTrainingView.jsp" method="post">
 		<button type="submit">
-			Training</button>
+			VIEW TRAININGS CARD</button>
 	</form>
 	
+	<form action="trainerTrainingCreate.jsp" method="post">
+		<button type="submit">
+			CREATE TRAININGS CARD</button>
+	</form>
+	
+	<form action="trainerTrainingUpdate.jsp" method="post">
+		<button type="submit">
+			UPDATE TRAININGS CARD</button>
+	</form>
+	
+	<form action="trainerTrainingDelete.jsp" method="post">
+		<button type="submit">
+			DELETE TRAININGS CARD</button>
+	</form>
+	
+	<form action="trainerBiomedicalDataDelete.jsp" method="post">
+		<button type="submit">
+			CREATE TRAININGS PROGRAM</button>
+	</form>
 
-	<form action="trainerTeam.jsp" method="post">
-		<button type="submit" value="esempioManager" name="richiesta">
-			Team</button>
+	<form action="homeTrainer.jsp" method="post">
+		<button type="submit">
+			Back</button>
 	</form>
-	
-	<form action="trainerBiomedicalData.jsp" method="post">
-		<button type="submit" value="esempioManager" name="richiesta">
-			Biomedical Data</button>
-	</form>
-	
-
 	
 	<form action="index.jsp" method="post">
-		<button type="submit" value="esempioManager" name="richiesta">
+		<button type="submit">
 			Exit</button>
 	</form>
 	

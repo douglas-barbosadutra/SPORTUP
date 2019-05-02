@@ -15,10 +15,10 @@ public class TeamDAO {
 
 	private final String QUERY_ALL = "select * from team";
 	private final String QUERY_INSERT = "insert into team (info) values (?)";
-	private final String QUERY_READ = "select * from training where id_training=?";
+	private final String QUERY_READ = "select * from team where id_team=?";
 	private final String QUERY_RIGHTS = "update user set type = ? where id_user = ?";
 
-	private final String QUERY_UPDATE = "UPDATE training SET info=? WHERE id_training=?";
+	private final String QUERY_UPDATE_TEAM = "UPDATE team SET info=? WHERE id_team=?";
 	private final String QUERY_DELETE = "delete from team where id_team=?";
 	private final String QUERY_UPDATE_ID_TRAINING = "update player SET id_training=null where id_training=?";
 
@@ -66,22 +66,24 @@ public class TeamDAO {
 			return false;
 		}
 	}
+	
 
-	public Training readTraining(int trainingId) {
+
+	public Team readTeam(int teamId) {
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement(QUERY_READ);
-			preparedStatement.setInt(1, trainingId);
+			preparedStatement.setInt(1, teamId);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			resultSet.next();
 			String info;
 
 			info = resultSet.getString("info");
 			
-			Training training = new Training(info);
-			training.setTrainingId(resultSet.getInt("id_training"));
+			Team team = new Team(info);
+			team.setTeamId(resultSet.getInt("id_team"));
 
-			return training;
+			return team;
 		} catch (SQLException e) {
 			GestoreEccezioni.getInstance().gestisciEccezione(e);
 			return null;
@@ -89,28 +91,28 @@ public class TeamDAO {
 
 	}
 
-	public boolean updateTraining(Training trainingToUpdate) {
+	public boolean updateTeam(Team teamToUpdate) {
 		Connection connection = ConnectionSingleton.getInstance();
 
 		// Check if id is present
-		if (trainingToUpdate.getTrainingId() == 0)
+		if (teamToUpdate.getTeamId() == 0)
 			return false;
 
-		Training trainingRead = readTraining(trainingToUpdate.getTrainingId());
-		if (!trainingRead.equals(trainingToUpdate)) {
+		Team teamRead = readTeam(teamToUpdate.getTeamId());
+		if (!teamRead.equals(teamToUpdate)) {
 			try {
 				// Fill the userToUpdate object
-				if (trainingToUpdate.getInfo() == null || trainingToUpdate.getInfo().equals("")) {
-					trainingToUpdate.setInfo(trainingRead.getInfo());
+				if (teamToUpdate.getInfo() == null || teamToUpdate.getInfo().equals("")) {
+					teamToUpdate.setInfo(teamRead.getInfo());
 				}
 				
 				
 	
 				
 				// Update the user
-				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE);
-				preparedStatement.setString(1, trainingToUpdate.getInfo());
-				preparedStatement.setInt(2, trainingToUpdate.getTrainingId());
+				PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(QUERY_UPDATE_TEAM);
+				preparedStatement.setString(1, teamToUpdate.getInfo());
+				preparedStatement.setInt(2, teamToUpdate.getTeamId());
 
 				int a = preparedStatement.executeUpdate();
 				if (a > 0)

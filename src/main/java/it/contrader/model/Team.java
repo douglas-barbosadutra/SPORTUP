@@ -7,6 +7,17 @@ public class Team {
 
 	public Team() {
 	}
+	
+	public Team(int id_team, String info) {
+		this.teamId = id_team;
+		this.info = info;
+	}
+	
+	public Team (int teamId,int playerId) {
+		this.teamId=teamId;
+		this.playerId=playerId;
+	}
+
 
 	public Team(String info) {
 		this.info = info;

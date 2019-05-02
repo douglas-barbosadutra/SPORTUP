@@ -14,6 +14,8 @@ public class TeamDTO {
 		this.info = info;
 	}
 	
+	
+	
 	public TeamDTO(int id_team, int id_player) {
 		this.id_team = id_team;
 		this.id_player = id_player;

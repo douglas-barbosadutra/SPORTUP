@@ -21,6 +21,10 @@
 	<servlet>
 		<servlet-name>UsersServlet</servlet-name>
 		<servlet-class>it.contrader.servlets.UsersServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TeamServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.TeamServlet</servlet-class>
 	</servlet>	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -37,6 +41,10 @@
 	<servlet-mapping>
 		<servlet-name>UsersServlet</servlet-name>
 		<url-pattern>/UsersServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TeamServlet</servlet-name>
+		<url-pattern>/TeamServlet</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>4000</session-timeout>
