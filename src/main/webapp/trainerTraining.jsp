@@ -10,29 +10,14 @@
 	
 	<form action="trainerTrainingView.jsp" method="post">
 		<button type="submit">
-			VIEW TRAININGS CARD</button>
+			VIEW TRAINING PROGRAMS</button>
 	</form>
 	
 	<form action="trainerTrainingCreate.jsp" method="post">
 		<button type="submit">
-			CREATE TRAININGS CARD</button>
+			CREATE TRAINING PROGRAM</button>
 	</form>
 	
-	<form action="trainerTrainingUpdate.jsp" method="post">
-		<button type="submit">
-			UPDATE TRAININGS CARD</button>
-	</form>
-	
-	<form action="trainerTrainingDelete.jsp" method="post">
-		<button type="submit">
-			DELETE TRAININGS CARD</button>
-	</form>
-	
-	<form action="trainerBiomedicalDataDelete.jsp" method="post">
-		<button type="submit">
-			CREATE TRAININGS PROGRAM</button>
-	</form>
-
 	<form action="homeTrainer.jsp" method="post">
 		<button type="submit">
 			Back</button>

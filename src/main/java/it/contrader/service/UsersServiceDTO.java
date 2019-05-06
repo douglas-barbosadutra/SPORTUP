@@ -8,6 +8,7 @@ import it.contrader.dao.LoginDAO;
 import it.contrader.dao.RegisterDAO;
 import it.contrader.dao.UserDAO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.Player;
 import it.contrader.model.User;
 import it.contrader.utils.Request;
 
@@ -64,26 +65,22 @@ public class UsersServiceDTO {
 		return this.usersDAO.setUserRights(userId, userType);
 	}
 	
-	/*public UserDTO getUserByUsernameAndPasword(String username, String password) {
-		return ConverterUser.toDTO(usersDAO.login(username, password));
+	public boolean addPlayerInfo(int userId, String player_info) {
+		return this.usersDAO.addPlayerInfo(userId, player_info);	
 	}
-
-	public boolean updateUsers (UsersDTO usersDTO) {
-		return this.usersDAO.updateUsers(UsersConverter.toEntity(usersDTO));
-		
-}
 	
-	public boolean deleteUsers (UsersDTO usersDTO) {
-		return this.usersDAO.deleteUsers(UsersConverter.toEntity(usersDTO));
-		
-}
+	public Player getPlayerInfo(int userId) {
+		return this.usersDAO.getPlayerInfo(userId);	
+	}
 	
-	public boolean insertUsers (UsersDTO usersDTO) {
-		return this.usersDAO.insertUsers(UsersConverter.toEntity(usersDTO));
 	
-}
-	*/
+	public Player getTrainingInfo(int userId) {
+		return this.usersDAO.getPlayerInfo(userId);	
+	}
 	
+	public List<Player> getAllPlayerTraining() {
+		return this.usersDAO.getAllPlayerTraining();
+	}	
 	
 	
 }

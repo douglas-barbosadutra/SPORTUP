@@ -27,6 +27,8 @@ public class LoginServlet extends HttpServlet {
 			final String password = request.getParameter("password").toString();
 			// recuperiamo l'utente
 			final Request r = usersServiceDTO.login(nomeUtente, password);
+			
+			request.setAttribute("id", r.get("id"));
 
 			if (r != null)
 			// verifichiamo che tipo di ruolo ha all'interno dell'applicazione

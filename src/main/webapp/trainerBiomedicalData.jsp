@@ -8,24 +8,27 @@
 
 	<h3>1. COSA VUOI FARE</h3>
 	
-	<form action="trainerBiomedicalDataView.jsp" method="post">
-		<button type="submit">
+	<form action="trainerBiomedicalData.jsp" method="post">
+	
+		<h3>
+			ID: <input type="text" id="player" name="id_player"
+				placeholder="inserisci id del player">
+		</h3>
+		
+		<button type="submit" formaction=trainerBiomedicalDataView.jsp>
 			VIEW BIOMEDICAL DATA PLAYER</button>
-	</form>
 	
-	<form action="trainerBiomedicalDataInsert.jsp" method="post">
-		<button type="submit">
+	
+		<button type="submit" formaction=trainerBiomedicalDataInsert.jsp>
 			INSERT BIOMEDICAL DATA PLAYER</button>
-	</form>
 	
-	<form action="trainerBiomedicalDataUpdate.jsp" method="post">
-		<button type="submit">
+		<button type="submit" formaction=trainerBiomedicalDataUpdate.jsp>
 			UPDATE BIOMEDICAL DATA PLAYER</button>
-	</form>
 	
-	<form action="trainerBiomedicalDataDelete.jsp" method="post">
-		<button type="submit">
+	
+		<button type="submit" formaction=BiomedicalDataServlet?richiesta=deleteBiomedicalData >
 			DELETE BIOMEDICAL DATA PLAYER</button>
+	
 	</form>
 
 	<form action="homeTrainer.jsp" method="post">

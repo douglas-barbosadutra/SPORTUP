@@ -13,6 +13,10 @@ public class Player {
 
 	public Player() {
 	}
+	
+	public Player(int userID) {
+		this.userId=userID;
+	}
 
 	public Player(String username, String role) {
 		this.username = username;

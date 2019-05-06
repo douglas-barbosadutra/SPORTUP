@@ -1,43 +1,110 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page import="it.contrader.dto.UserDTO"%>
+<%@ page import="it.contrader.model.Training"%>
+<%@ page import="it.contrader.service.TrainingServiceDTO"%>
+
+
+<%@ page import="java.util.*"%>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+<%
+
+		TrainingServiceDTO trainingServiceDTO = new TrainingServiceDTO();
+		List<Training> trainingList = trainingServiceDTO.getAllTraining();
+
+%>
+
 </head>
+
 <body>
 
-<h2><center>------- INSERT USER -------</center></h2>
-<form action="CustomersServlet?richiesta=home" method="post">
-	<input type="submit" value="HOME" name="richiesta">
-</form>
+	<h1>
 
-     <h3>Inserisci i dati dell'utente</h3>
-     <form action="CustomersServlet?richiesta=insertUser" method="post">
-     	
-     	<h4>Username: <input type = "text" id = "user" name ="username" placeholder = "inserisci username"></h4>
-     	
-     	<h4>Password: <input type = "password" id = "user" name ="password" placeholder = "inserisci la password"></h4>
-     	
-     	<h4>Nome: <input type = "text" id = "user" name ="nome" placeholder = "inserisci nome"></h4>
-     	
-     	<h4>Cognome: <input type = "text" id = "user" name ="cognome" placeholder = "inserisci cognome"></h4>
-     	
-     	<h4>Telefono: <input type = "text" id = "user" name ="telefono" placeholder = "inserisci telefono"></h4>
-     	
-     	<h4>Mail: <input type = "text" id = "user" name ="mail" placeholder = "inserisci mail"></h4>
-     	
-     	<h4>Partita iva: <input type = "text" id = "user" name ="partitaiva" placeholder = "inserisci partita iva"></h4>
-     	
-     	<h4>Ruolo: <input type = "text" id = "user" name ="ruolo" placeholder = "inserisci ruolo"></h4>
+		TRAINING PROGRAMS
 
-     	
-     	<input type="submit" value="Inserisci Utente" name="richiesta">
-     	
-     </form>
+	</h1>
 
-     
+	
+
+	
+
+
+
+	<form action="TrainingServlet" method="post">
+
+		<table border="2">
+
+			<tr>
+
+				<th>ID</th>
+
+				<th>Info</th>
+		
+			</tr>
+
+			<%
+
+				for (int i = 0; i < trainingList.size(); i++) {
+					
+			%>
+
+			<tr>
+
+				<td><%=trainingList.get(i).getTrainingId()%></td>
+
+				<td><%=trainingList.get(i).getInfo()%></td>
+	
+			</tr>
+
+			<%
+
+				}
+
+			%>
+
+		</table>
+	</form>
+
+	<form action="trainerTraining.jsp" method="post">
+	
+		<h3>
+			ID: <input type="text" id="id_training" name="id_training" value=<%=request.getParameter("id_training") %>
+				placeholder="inserisci id del training">
+		</h3>
+		
+		<h3>
+			Info: <input type="text" id="info_training" name="info_training"
+				placeholder="insert info training">
+		</h3>
+		
+		<button type="submit" formaction=TrainingServlet?richiesta=updateTraining> 
+			UPDATE INFO TRAINING PROGRAM</button>
+	
+		<button type="submit"> DELETE TRAINING PROGRAM</button>
+		
+		<h4>Training Card Menu</h4>
+		
+		<button type="submit" formaction=trainerTrainingCardView.jsp>
+			VIEW TRAINING CARDS</button>	
+	
+		<button type="submit" formaction=trainerTrainingCardCreate.jsp>
+			CREATE TRAINING CARD</button>
+		
+	</form>
+
+	
+	<form action="trainerTraining.jsp" method="post">
+		<button type="submit">INDIETRO</button>
+	</form>
+
+
+
+
 
 </body>
+
 </html>

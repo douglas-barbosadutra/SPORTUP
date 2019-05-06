@@ -12,7 +12,7 @@
 <title>Register Trader</title>
 </head>
 <body>
-	<h2>------- VIEW BIOMEDICALDATA -------</h2>
+	<h2>------- VIEW BIOMEDICAL DATA -------</h2>
 	<div>
 	
 	<%
@@ -20,7 +20,7 @@
 	BiomedicalData bData = new BiomedicalData();
 	BiomedicalDataServiceDTO bDataServiceDTO = new BiomedicalDataServiceDTO();
 	
-	int player_id = Integer.parseInt(request.getParameter("id_player"));
+	int player_id = Integer.parseInt(request.getParameter("id"));
 	System.out.println(player_id);
 	Player player = new Player(player_id);
 	
@@ -28,7 +28,10 @@
 	
 	%>
 	
-		<form action="BiomedicalDataServlet" method="post">
+		<form action="BiomedicalDataServlet&id=<%=request.getParameter("id") %>" method="post" >
+		
+		 <input type="hidden" name="id"  /> 
+		
 
 		<table border="2">
 
@@ -64,8 +67,7 @@
 				<td><%=bData.getFat_free_mass()%></td>
 
 
-
-				
+	
 
 			</tr>
 
@@ -74,7 +76,7 @@
 		</table>
 	</form>
 	
-	 <form action="trainerBiomedicalData.jsp" method="post">
+	 <form action="homePlayer.jsp?id=<%=player_id%>" method="post" >
 		<button type="submit">INDIETRO</button>
 	</form>
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.contrader.model.Player;
 //import it.contrader.converter.UsersConverter;
 //import it.contrader.dto.UsersDTO;
 import it.contrader.service.UsersServiceDTO;
@@ -27,11 +28,11 @@ public class UsersServlet extends HttpServlet {
 	@Override
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		UsersServiceDTO userservice=new UsersServiceDTO();
 		final HttpSession session = request.getSession();
 		session.setAttribute("utente", null);
 
 		if (request != null) {
-//			System.out.println(request.getParameter("richiesta").toString());
 			if(request.getParameter("richiesta").toString().equals("deleteUser")) {
 				final int id_user = Integer.parseInt(request.getParameter("id_user"));
 				usersServiceDTO.delete(id_user);
@@ -46,6 +47,62 @@ public class UsersServlet extends HttpServlet {
 				usersServiceDTO.setUserRights(Integer.parseInt(request.getParameter("id_user")), "P");
 				getServletContext().getRequestDispatcher("/adminUsersView.jsp").forward(request, response);
 			}
+			else if(request.getParameter("richiesta").toString().equals("add"))
+			{
+				int id=Integer.parseInt(request.getParameter("id"));
+		
+	           userservice.addPlayerInfo(id,request.getParameter("info"));
+	 
+				    request.setAttribute("notify", "hai aggiunto informazioni");
+				    
+			        getServletContext().getRequestDispatcher("/homePlayer.jsp").forward(request, response);
+			        		
+			}
+			
+			//////////////////////
+			
+			else if(request.getParameter("richiesta").toString().equals("info"))
+			{
+
+					int id=Integer.parseInt(request.getParameter("id"));
+				
+					Player player=userservice.getPlayerInfo(id);
+					
+					request.setAttribute("name", player.getUsername());
+					
+					request.setAttribute("password", player.getPassword());
+					
+					request.setAttribute("role", player.getPlayerRole());
+		
+					request.setAttribute("info_training", player.getTrainingInfo());
+				
+					request.setAttribute("info_player",player.getPlayerInfo());
+					
+					
+					
+					getServletContext().getRequestDispatcher("/playerInfo.jsp").forward(request, response);	
+			 }
+			 
+			 
+			 /////////////////////////
+			 
+			else if (request.getParameter("richiesta").toString().equals("training")){
+					
+					int id=Integer.parseInt(request.getParameter("id"));
+
+					
+				 	
+				  Player p=userservice.getTrainingInfo(id);
+				   
+			       request.setAttribute("role",p.getPlayerRole());
+			       request.setAttribute("username",p.getUsername());
+			       request.setAttribute("pass", p.getPassword());
+			       request.setAttribute("info", p.getTrainingInfo());
+
+			        getServletContext().getRequestDispatcher("/trainingInfo.jsp").forward(request, response);
+
+
+			 }
 		}
 	}
 //

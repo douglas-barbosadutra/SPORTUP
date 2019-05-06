@@ -26,6 +26,14 @@
 		<servlet-name>TeamServlet</servlet-name>
 		<servlet-class>it.contrader.servlets.TeamServlet</servlet-class>
 	</servlet>	
+	<servlet>
+		<servlet-name>BiomedicalDataServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.BiomedicalDataServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TrainingServlet</servlet-name>
+		<servlet-class>it.contrader.servlets.TrainingServlet</servlet-class>
+	</servlet>	
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/LoginServlet</url-pattern>
@@ -45,6 +53,14 @@
 	<servlet-mapping>
 		<servlet-name>TeamServlet</servlet-name>
 		<url-pattern>/TeamServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BiomedicalDataServlet</servlet-name>
+		<url-pattern>/BiomedicalDataServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TrainingServlet</servlet-name>
+		<url-pattern>/TrainingServlet</url-pattern>
 	</servlet-mapping>
 	<session-config>
 		<session-timeout>4000</session-timeout>
