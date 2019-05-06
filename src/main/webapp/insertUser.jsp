@@ -13,6 +13,8 @@
 	<input type="submit" value="HOME" name="richiesta">
 </form>
 
+
+
      <h3>Inserisci i dati dell'utente</h3>
      <form action="CustomersServlet?richiesta=insertUser" method="post">
      	
