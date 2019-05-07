@@ -1,10 +1,9 @@
 package it.contrader.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+
+import javax.persistence.*;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.lang.Nullable;
@@ -20,9 +19,9 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	@Id
-	@Column(name = "idUser")
+	@Column(name = "id_user")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idUser;
+	private Integer id_user;
 
 	@Column(name = "username")
 	@NotNull
@@ -32,12 +31,46 @@ public class User {
 	@NotNull
 	private String password;
 
-	@NotNull
-	@Column(name = "ruolo")
-	private String ruolo;
+	
+	@Column(name = "type")
+	private String type;
+	
+	
+	
+	
+	
+	
+	public int getIdUser() {
+		return this.id_user;
+	}
+	
+	public String getUsername() {
+		return this.username;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+	public String getType() {
+		return this.type;
+	}
+	
+	public void setIdUser(int userId) {
+		this.id_user = userId;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public void setType(String type) {
+		this.type = type;
+	}
 
-	@Nullable
-	@Column(name = "email")
-	private String email;
+	
 
 }

@@ -15,7 +15,20 @@ public class UserDTO {
 	
 	private String password;
 
-	private String ruolo;
+	private String type;
 	
-	private String email;
+	public UserDTO(String username, String password, String usertype) {
+		this.username = username;
+		this.type = usertype;
+		this.password = password;
+	}
+	
+	public UserDTO(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.type = "pending";
+	}
+	
+	
+	
 }

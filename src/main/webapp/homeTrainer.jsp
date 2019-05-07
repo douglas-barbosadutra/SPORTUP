@@ -28,6 +28,6 @@
          </ul>
     </div>
 </nav>
-<h1>HOME ADMIN</h1>
+<h1>HOME TRAINER</h1>
 </body>
 </html>

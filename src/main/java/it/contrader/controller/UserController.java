@@ -48,13 +48,14 @@ public class UserController {
 		
 	}
 	
-	@RequestMapping(value = "/crea", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/crea", method = RequestMethod.GET)
 	public String insert(HttpServletRequest request) {
 		visualUser(request);
 		request.setAttribute("option", "insert");
 		return "creaUser";
 		
 	}
+	*/
 	
 	@RequestMapping(value = "/cercaUser", method = RequestMethod.GET)
 	public String cercaUser(HttpServletRequest request) {
@@ -72,14 +73,15 @@ public class UserController {
 	public String insertUser(HttpServletRequest request) {
 		String username = request.getParameter("username").toString();
 		String password = request.getParameter("password").toString();
-		String ruolo = request.getParameter("ruolo").toString();
+		//String type = request.getParameter("type").toString();
+		String type = "pending";
 
-		UserDTO userObj = new UserDTO(0, username, password, ruolo,"");
+		UserDTO userObj = new UserDTO( username, password, type);
 		
 		userService.insertUser(userObj);
 
 		visualUser(request);
-		return "homeUser";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -89,15 +91,40 @@ public class UserController {
 		final String username = request.getParameter("username");
 		final String password = request.getParameter("password");
 		final UserDTO userDTO = userService.getByUsernameAndPassword(username, password);
-		final String ruolo = userDTO.getRuolo();
+		final String ruolo = userDTO.getType();
 		if (!StringUtils.isEmpty(ruolo)) {
 			session.setAttribute("utenteCollegato", userDTO);
-			if (ruolo.equals("ADMIN")) {
+			if (ruolo.equals("admin")) {
 				return "home";
-			} else if (ruolo.equals("CHATMASTER")) {
-				return "home";
+			} else if (ruolo.equals("trainer")) {
+				return "homeTrainer";
+			} else if (ruolo.equals("player")) {
+				return "homePlayer";
 			}
 		}
 		return "index";
 	}
+	
+	/*@RequestMapping(value = "/signup", method = RequestMethod.POST)
+	public String insert(HttpServletRequest request) {
+
+		session = request.getSession();
+		session.setAttribute("utente", null);
+
+		if (request != null) {
+			final String username = request.getParameter("username").toString();
+			final String password = request.getParameter("password").toString();
+			final String type = "pending";
+			UserDTO userDTO = new UserDTO();
+			userDTO.setUsername(username);
+			userDTO.setPassword(password);
+			userDTO.setType(type);
+			// recuperiamo l'utente
+			userService.insertUser(userDTO);
+			visualUser(request);
+
+		return "index";
+		}
+	}
+	*/
 }
