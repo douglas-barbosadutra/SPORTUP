@@ -22,7 +22,7 @@
 
 <body class="text-center">
 	<form class="form-signin" action="/User" method="post">
-		<h1 class="h3 mb-3 font-weight-normal">Metabot LOGIN PAGE</h1>
+		<h1 class="h3 mb-3 font-weight-normal">SPORTUP LOGIN PAGE</h1>
 
 		<label for="inputUser" class="sr-only">Username</label> <input
 			type="text" name="username" id="inputUser" class="form-control"

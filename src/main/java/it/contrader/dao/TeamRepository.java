@@ -6,6 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import it.contrader.model.Player;
+import it.contrader.model.Team;
+import it.contrader.model.Training;
 import it.contrader.model.User;
 
 import java.util.List;
@@ -13,16 +16,16 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface TeamRepository extends CrudRepository<Team, Integer> {
 
 	//public User findUserByUsernameAndPassword(String username,String password);
-	public List<User> findAllByUsername(String username);
+	//public List<Player> findAllByUsername(String username);
 	
 	
-	public User  findUserByUsernameAndPassword(String username,String password);
+	//public User  findUserByUsernameAndPassword(String username,String password);
 	
 	@Modifying(clearAutomatically = true)
 	@org.springframework.transaction.annotation.Transactional
-	@Query(value = "update User u set u.type=:TYPE where u.id_user=:ID", nativeQuery = true)
-	public void assignById(@Param("ID") int id,@Param("TYPE") String type);
+	@Query(value = "insert into player_team values (:idTeam, :idPlayer)", nativeQuery = true)
+	public void assignTeam(@Param("idTeam") int idTeam,@Param("idPlayer") int idPlayer);
 }

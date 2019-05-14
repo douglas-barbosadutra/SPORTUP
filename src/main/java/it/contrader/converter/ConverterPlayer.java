@@ -16,6 +16,8 @@ public class ConverterPlayer {
 			playerDTO.setRuolo(player.getRuolo());
 			playerDTO.setIdTraining(player.getIdTraining());
 			playerDTO.setIdBiomedicalData(player.getIdBiomedicalData());
+			playerDTO.setIdDiet(player.getIdDiet());
+			playerDTO.setIdPerformance(player.getIdPerformance());
 			playerDTO.setInfo(player.getInfo());
 		}
 		return playerDTO;
@@ -29,7 +31,9 @@ public class ConverterPlayer {
 			player.setRuolo(playerDTO.getRuolo());
 			player.setIdTraining(playerDTO.getIdTraining());
 			player.setIdBiomedicalData(playerDTO.getIdBiomedicalData());
-			player.setInfo(playerDTO.getInfo());
+			player.setIdDiet(playerDTO.getIdDiet());
+			player.setIdPerformance(playerDTO.getIdPerformance());
+			player.setInfo(playerDTO.getInfo());			
 		}
 		return player;
 	}

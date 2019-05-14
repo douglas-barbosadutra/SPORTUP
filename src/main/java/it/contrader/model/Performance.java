@@ -15,23 +15,21 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
 @Entity
-public class User {
+public class Performance {
 
 	@Id
-	@Column(name = "idUser")
+	@Column(name = "idPerformance")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idUser;
+	private Integer idPerformance;
 
-	@Column(name = "username")
-	private String username;
+	@Column(name = "maxCorsaMin")
+	private int maxCorsaMin;
 
-	@Column(name = "password")
-	private String password;
-
-	@Column(name = "type")
-	private String type;
+	@Column(name = "maxFlessioni")
+	private int maxFlessioni;
 	
+	@Column(name = "maxAddominali")
+	private int maxAddominali;
 
 }

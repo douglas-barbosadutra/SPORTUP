@@ -11,23 +11,121 @@
 
 <title>Home</title>
 
-<!-- Bootstrap core CSS -->
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+<style>
 
-<!-- Custom styles for this template -->
-<link href="/css/navbar.css" rel="stylesheet">
+body {
+background-color:#0066cc;
+    text-align: center;
+
+}
+
+
+button {
+border-radius:5px;
+	background-color:#BEBEBE;
+	display:inline-block;
+	border:none;
+	color:black;
+	font-family:Arial;
+	padding:16px 31px;
+	text-decoration:none;
+
+}
+button:hover {
+	background-color:white;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+ 
+}
+
+li {
+  float: left;
+
+}
+
+
+
+li button{
+  display: inline-block;
+  text-align: center;
+  padding: 14px 19px;
+  text-decoration: none;
+  margin-right: 3px;
+}
+
+p{
+
+color:white;
+ font-size: 15;
+
+}
+
+
+</style>
+
+
+
+<%String id=request.getAttribute("id").toString(); %>
 </head>
 
 <body>
-<nav class='navbar navbar-inverse'>
-     <div class='container-fluid'>
-         <ul class='nav navbar-nav navbar-inverse navbar-custom'>
-            <li><a href="/Home/userManagement/">User</a></li>
-            <li><a href="/Home/chatManagement/">Chatbot</a></li>
-            <li><a href="/Home/logout/">Logout</a></li>
-         </ul>
-    </div>
-</nav>
-<h1>HOME PLAYER</h1>
+
+	<h1>Welcome: ${utente}</h1>
+	
+	<h2> HOME PLAYER</h2>
+	
+	<ul>
+	 <li>
+	<form action="/Player/getTraining" method="post" >
+	 <input type="hidden" name="id" value=<%=id %>>
+		<button type="submit" value="esempioManager" name="training">Training</button>
+	</form>
+ </li>
+  <li>
+	<form action="/Player/getInfo" method="post">
+	 <input type="hidden" name="id" value="${id}" />
+		<button type="submit" value="esempioManager" name="print_info"  value="${id}" >Info</button>
+	</form>
+   </li>
+    <li>
+	<form action="/Player/addInfo" method="post" >
+	<label for="name" >aggiungi info</label>
+	 <input type="hidden" name="id" value="${id}" />
+     <input type="text" id="name" name="info" required>
+		<button  type="submit" value="esempioManager" name="add_info">Add Info</button>
+	</form>
+	 </li>
+
+<li>
+	<form action="/Player/logOut" method="post" >
+		<button type="submit">Exit</button>
+			</form>
+		</li>
+		
+		<li>
+		<form action="/Performance/getPerformance" method="post" >
+		 <input type="hidden" name="id" value="${id}"/>
+		<button type="submit">Performance</button>
+			</form>
+		</li>
+		
+			<li>
+		<form action="/BiomedicalData/getBiomedical" method="post" >
+		 <input type="hidden" name="id" value="${id}"/>
+		<button type="submit">Biomedical</button>
+			</form>
+		</li>
+		
+		
+	</ul>
+
 </body>
 </html>

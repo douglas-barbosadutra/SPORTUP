@@ -19,15 +19,22 @@
 </head>
 
 <body>
-<nav class='navbar navbar-inverse'>
-     <div class='container-fluid'>
-         <ul class='nav navbar-nav navbar-inverse navbar-custom'>
-            <li><a href="/Home/userManagement/">User</a></li>
-            <li><a href="/Home/chatManagement/">Chatbot</a></li>
-            <li><a href="/Home/logout/">Logout</a></li>
-         </ul>
-    </div>
-</nav>
 <h1>HOME TRAINER</h1>
+
+<form action="/Trainer/training" method="get">
+         	<a href="/Trainer/training"><button>TRAINING</button></a>
+</form>
+         
+<form action="/Team/view" method="get">
+         	<a href="/Team/visualteam"><button>TEAM</button></a>
+</form>
+<form action="/Trainer/Training" method="get">
+         	<h4>INSERISCI ID ATLETA<input type="text" id = "biomedicalData" name ="id" placeholder = "inserisci id_player">
+         	<button formaction="/Trainer/biomedicalData" type="submit">BIOMEDICAL DATA</button></h4>
+         	<button formaction="/Trainer/performance" type="submit">PERFORMANCE</button></h4>
+        
+            <li><a href="/Home/logout/">Logout</a></li>
+    
+</form>
 </body>
 </html>

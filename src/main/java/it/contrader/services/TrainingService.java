@@ -1,3 +1,4 @@
+
 package it.contrader.services;
 
 import java.util.ArrayList;
@@ -11,37 +12,45 @@ import it.contrader.dao.UserRepository;
 import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 
-@Service
-public class UserService {
+import it.contrader.converter.ConverterTraining;
+import it.contrader.dao.TrainingRepository;
+import it.contrader.dto.TrainingDTO;
+import it.contrader.model.Training;
 
-	private final UserRepository userRepository;
+@Service
+public class TrainingService {
+
+	private final TrainingRepository trainingRepository;
 
 	@Autowired
-	public UserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
+	public TrainingService(TrainingRepository trainingRepository) {
+		this.trainingRepository = trainingRepository;
+	}
+
+	public List<TrainingDTO> getListaTrainingDTO() {
+		return ConverterTraining.toListDTO((List<Training>) trainingRepository.findAll());
+	}
+
+
+	public TrainingDTO getTrainingDTOById(Integer id) {
+		return ConverterTraining.toDTO(trainingRepository.findById(id).get());
 	}
 	
-	
 
-	public List<UserDTO> getListaUserDTO() {
-		return ConverterUser.toListDTO((List<User>) userRepository.findAll());
-	}
-
-	public UserDTO getUserDTOById(Integer id) {
-		return ConverterUser.toDTO(userRepository.findById(id).get());
-	}
-
+/*
 	public UserDTO getByUsernameAndPassword(String username, String password) {
 
 		final User user = userRepository.findUserByUsernameAndPassword(username, password);
 
 		return ConverterUser.toDTO(user);
 	}
+*/
 
-	public boolean insertUser(UserDTO userDTO) {
-		return userRepository.save(ConverterUser.toEntity(userDTO)) != null;
+	public boolean insertTraining(TrainingDTO trainingDTO) {
+		return trainingRepository.save(ConverterTraining.toEntity(trainingDTO)) != null;
 	}
-	
+
+/*	
 	//public boolean insertUser(String username, String password) {
 	//	return userRepository.save(ConverterUser.toEntity(userDTO)) != null;
 	//}
@@ -54,10 +63,6 @@ public class UserService {
 		userRepository.deleteById(id);
 	}
 	
-	public void assignTypeById(Integer id, String type) {
-		userRepository.assignById(id, type);
-	}
-	
 	public List<UserDTO> findUserDTOByUsername(String username) {
 		
 		final List<User> list = userRepository.findAllByUsername(username);
@@ -67,4 +72,8 @@ public class UserService {
 		
 	
 	}
+	*/
+/*
+}
+*/
 }
