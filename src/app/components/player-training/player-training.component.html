@@ -1,0 +1,45 @@
+<h1>ALLENAMENTO</h1>
+<tr class="training">
+  <div *ngIf="training">
+  <td>{{training.idTraining}}</td>
+
+  <td>{{training.info}}</td>
+</div>
+</tr>
+
+<div *ngIf="trainingCard">
+<table class="trainingCard">
+  
+      <tr>
+          <th>ID</th>
+          <th>lunedi</th>
+          <th>martedi</th>
+          <th>mercoledi</th>
+          <th>giovedi</th>
+          <th>venerdi</th>
+          <th>sabato</th>
+          <th>domenica</th>
+          <th>deleted</th>
+      </tr>
+  
+
+      <tr class="trainingCards" *ngFor="let trainingCard of trainingCards; let i = index">
+          <td>{{trainingCard[i].idTrainingCard}}</td>
+          <td>{{trainingCard[i].monday}}</td>
+          <td>{{trainingCard[i].tuesday}}</td>
+          <td>{{trainingCard[i].wednesday}}</td>
+          <td>{{trainingCard[i].thursday}}</td>
+          <td>{{trainingCard[i].friday}}</td>
+          <td>{{trainingCard[i].saturday}}</td>
+          <td>{{trainingCard[i].sunday}}</td>
+          <td>{{trainingCard[i].deleted}}</td>
+          
+      </tr>
+
+      <!--<%
+}
+%>-->
+
+ 
+</table>
+</div>

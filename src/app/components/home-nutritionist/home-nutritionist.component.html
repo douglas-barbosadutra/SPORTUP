@@ -1,0 +1,32 @@
+<title>Home Nutritionist</title>
+<body>
+  <h1>HOME NUTRITIONIST</h1>
+  <h4>LISTA ATLETI</h4>
+  <div *ngIf="playerList">
+    <ul class="playerList">
+      <li *ngFor="let player of playerList ; let i = index">
+        <span> {{player.idUser}} </span> {{player.username}}
+      </li>
+    </ul>
+  </div>
+  <form #f="ngForm">
+    <div>
+      <h5>INSERISCI ID ATLETA<input type="text" id = "diet" name ="id" placeholder = "inserisci id_player"></h5>
+      <button type="submit" >View Diet</button>
+    </div>
+  </form>
+  <a href="/login">Logout</a>
+
+</body>
+<!--
+	
+
+<form action="/Diet" method="get">
+         	
+
+         	
+    
+</form>
+</body>
+</html>
+-->
