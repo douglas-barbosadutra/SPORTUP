@@ -4,6 +4,7 @@ import { User } from 'src/app/models/User';
 import { NutritionistService } from 'src/app/services/nutritionist.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Daily } from 'src/app/models/Daily';
 
 @Component({
   selector: 'app-home-nutritionist',
@@ -12,7 +13,9 @@ import { NgForm } from '@angular/forms';
 })
 
 export class HomeNutritionistComponent implements OnInit {
+  dietList: Daily[];
   playerList: User[];
+  idPlayer: number;
 
   constructor(private nutritionistService: NutritionistService, private router: Router) { }
 
@@ -41,4 +44,14 @@ export class HomeNutritionistComponent implements OnInit {
     return this.playerList;         
   }
 
+
+  viewDiet(): void {
+    this.router.navigateByUrl('/nutritionistDietView/'+ this.idPlayer);
+  }
+  
+  
+
+
 }
+
+

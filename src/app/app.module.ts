@@ -23,6 +23,7 @@ import { PlayerTrainingComponent } from './components/player-training/player-tra
 import { PlayerPerformanceViewComponent } from './components/player-performance-view/player-performance-view.component';
 import { HomeNutritionistComponent } from './components/home-nutritionist/home-nutritionist.component';
 import { PlayerInfoComponent } from './components/player-info/player-info.component';
+import { NutritionistDietViewComponent } from './components/nutritionist-diet-view/nutritionist-diet-view.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PlayerInfoComponent } from './components/player-info/player-info.compon
     TrainerPerformanceViewComponent,
     TrainerBiomedicalDataViewComponent,
     PlayerInfoComponent,
-    BiomedicalGraphComponent
+    BiomedicalGraphComponent,
+    NutritionistDietViewComponent
     
   ],
   imports: [

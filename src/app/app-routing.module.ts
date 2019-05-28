@@ -21,7 +21,7 @@ import { PlayerBiomedicalDataViewComponent } from './components/player-biomedica
 import { PlayerPerformanceViewComponent } from './components/player-performance-view/player-performance-view.component';
 import { TrainerPerformanceViewComponent } from './components/trainer-performance-view/trainer-performance-view.component';
 import { BiomedicalGraphComponent } from './components/biomedical-graph/biomedical-graph.component';
-
+import { NutritionistDietViewComponent } from './components/nutritionist-diet-view/nutritionist-diet-view.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -39,6 +39,8 @@ const routes: Routes = [
   { path: 'homeNutritionist', component: HomeNutritionistComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'biomedicalGraph', component: BiomedicalGraphComponent },
+  { path: 'nutritionistDietView', component: NutritionistDietViewComponent},
+
 
 ];
 

@@ -1,3 +1,5 @@
+
+
 <title>Home Nutritionist</title>
 <body>
   <h1>HOME NUTRITIONIST</h1>
@@ -9,24 +11,18 @@
       </li>
     </ul>
   </div>
-  <form #f="ngForm">
+  
+  <form>
     <div>
-      <h5>INSERISCI ID ATLETA<input type="text" id = "diet" name ="id" placeholder = "inserisci id_player"></h5>
-      <button type="submit" >View Diet</button>
+      <label>INSERISCI ID ATLETA</label><input type="number" name ="idPlayer" placeholder ="inserisci id player" [(ngModel)]="idPlayer" >
     </div>
+    <button type="submit" (click)='viewDiet()' >View Diet</button>  
   </form>
+  
   <a href="/login">Logout</a>
-
-</body>
-<!--
-	
-
-<form action="/Diet" method="get">
+  
+  <form action="/Diet" method="get">
          	
+  </form>
 
-         	
-    
-</form>
-</body>
-</html>
--->
+

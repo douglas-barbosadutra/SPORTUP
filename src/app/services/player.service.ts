@@ -7,6 +7,7 @@ import { Player } from '../models/player';
 import { Observable, of } from 'rxjs';
 import { BiomedicalData } from '../models/biomedicalData';
 import { Performance } from '../models/performance';
+import { Daily } from '../models/Daily';
 
 @Injectable({
   providedIn: 'root'
@@ -51,6 +52,14 @@ export class PlayerService {
     getPerformance(idUser:number): Observable<Performance> {
       return this.http.get<Performance>('http://localhost:8080/Performance/getPerformance?playerId='+ idUser)
           .pipe(tap((response) => console.log('Player'), catchError(this.handleError('info error', {})))
+          );
+    }
+
+
+    viewDiet(idPlayer: number): Observable<Daily[]>{
+      console.log("c'รจ nessuno?");
+      return this.http.get<Daily[]>('http://localhost:8080/Diet/view?playerId='+ idPlayer)
+          .pipe(tap((response) => console.log('Fetching daily diet'), catchError(this.handleError('daily diet', {})))
           );
     }
 }

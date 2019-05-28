@@ -10,6 +10,7 @@ import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Training } from 'src/app/models/Training';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { Daily } from 'src/app/models/Daily';
 
 @Component({
   selector: 'app-home-player',
@@ -18,9 +19,14 @@ import { Color, BaseChartDirective, Label } from 'ng2-charts';
 })
 export class HomePlayerComponent implements OnInit {
   idUser: number;
+  userList : User[];
   public player: Player;
   public training: Training;
   info: string;
+  date: Date;
+  day: number;
+  diet: Daily[];
+  dailyDiet: Daily;
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81], label: 'peso' },
     { data: [28, 48, 40, 19], label: 'massa grassa' },
@@ -97,11 +103,23 @@ export class HomePlayerComponent implements OnInit {
   public lineChartType = 'line';
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
-  constructor(private playerService: PlayerService,private route: ActivatedRoute,private router: Router) { }
+  constructor(private playerService: PlayerService, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.idUser = Number(this.route.snapshot.paramMap.get('idUser'));
-  
+    
+    this.date = new Date();
+    this.day = this.date.getDay();
+    
+    this.playerService.viewDiet(this.idUser).subscribe((response) => {
+      console.log('Dieta:Risposta ricevuta');
+            if (response != null) {
+                this.diet=response;
+                var b = this.diet.filter(e => (e.idDay)%7 === this.day);
+                this.dailyDiet = b[0];  
+                console.log(this.dailyDiet);
+              }
+     });
 
   }
 
