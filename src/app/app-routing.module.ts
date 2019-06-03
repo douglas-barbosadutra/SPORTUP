@@ -39,7 +39,7 @@ const routes: Routes = [
   { path: 'homeNutritionist', component: HomeNutritionistComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'biomedicalGraph', component: BiomedicalGraphComponent },
-  { path: 'nutritionistDietView', component: NutritionistDietViewComponent},
+  { path: 'nutritionistDietView/:idPlayer', component: NutritionistDietViewComponent}
 
 
 ];

@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUsername(idUser: number): Observable <User>{
-    return this.http.get<User>('http://localhost:8080/User/getUserById?IdUser='+idUser)
+    return this.http.get<User>('http://localhost:8080/User/getUser?idUser='+idUser)
       .pipe(tap((response) => console.log('User'), catchError(this.handleError('error', {})))
       );
   }

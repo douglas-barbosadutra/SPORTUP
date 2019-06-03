@@ -20,6 +20,7 @@ import { Daily } from 'src/app/models/Daily';
 export class HomePlayerComponent implements OnInit {
   idUser: number;
   userList : User[];
+  user:User;
   public player: Player;
   public training: Training;
   info: string;
@@ -103,13 +104,17 @@ export class HomePlayerComponent implements OnInit {
   public lineChartType = 'line';
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
-  constructor(private playerService: PlayerService, private route: ActivatedRoute,private router: Router) { }
+  constructor(private playerService: PlayerService,private userService: UserService, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit() {
     this.idUser = Number(this.route.snapshot.paramMap.get('idUser'));
     
     this.date = new Date();
     this.day = this.date.getDay();
+
+    this.userService.getUsername(this.idUser).subscribe((response)=>{
+      this.user=response;
+    })
     
     this.playerService.viewDiet(this.idUser).subscribe((response) => {
       console.log('Dieta:Risposta ricevuta');
