@@ -29,8 +29,8 @@ public class Training {
 	@NotNull
 	private String info;
 	
-	@OneToMany(mappedBy="training")
-	private List<TrainingCard> trainingCard;	
+//	@OneToMany(mappedBy="training")
+//	private List<TrainingCard> trainingCard;	
 	
 	
 	

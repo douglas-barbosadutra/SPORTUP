@@ -61,16 +61,14 @@ public class PlayerController {
 	@RequestMapping(value = "/addInfo", method = RequestMethod.POST)
 	public PlayerDTO addInfo(@RequestParam(value = "playerId") int idPlayer,
 			@RequestParam(value = "info") String info) {
-
 		PlayerDTO playerDTO = playerService.getPlayerDTOById(idPlayer);
 		playerDTO.setInfo(info);
 		playerService.insertPlayer(playerDTO);
 		//request.setAttribute("id", id);	
 		return playerDTO;
-
 	}
 	
-	@RequestMapping(value = "/getTraining", method = RequestMethod.POST)
+	@RequestMapping(value = "/getTraining", method = RequestMethod.GET)
 	public TrainingDTO getTraining(@RequestParam(value = "playerId") int idPlayer) {
 
 		PlayerDTO playerDTO = playerService.getPlayerDTOById(idPlayer);

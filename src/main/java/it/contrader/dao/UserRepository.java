@@ -19,7 +19,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	public List<User> findAllByUsername(String username);
 	
 	
-	public User  findUserByUsernameAndPassword(String username,String password);
+	public User findUserByUsernameAndPassword(String username,String password);
 	
 	@Modifying(clearAutomatically = true)
 	@org.springframework.transaction.annotation.Transactional

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import it.contrader.dto.UserDTO;
 import it.contrader.services.UserService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/Home")
 public class HomeController {

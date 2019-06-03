@@ -14,7 +14,7 @@ import it.contrader.dto.TrainingCardDTO;
 import it.contrader.services.TrainingCardService;
 import it.contrader.services.TrainingService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping("/TrainingCard")
 public class TrainingCardController {

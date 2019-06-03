@@ -1,109 +1,72 @@
-
 package it.contrader.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.contrader.dto.BiomedicalDataDTO;
+import it.contrader.converter.ConverterDaily;
+import it.contrader.dto.DailyDTO;
 import it.contrader.dto.DietDTO;
-import it.contrader.dto.UserDTO;
-import it.contrader.model.Diet;
 import it.contrader.dto.PlayerDTO;
-import it.contrader.services.BiomedicalDataService;
+import it.contrader.model.Daily;
+import it.contrader.model.Diet;
+import it.contrader.services.DailyService;
 import it.contrader.services.DietService;
-import it.contrader.services.UserService;
 import it.contrader.services.PlayerService;
+import it.contrader.services.UserService;
 
-@CrossOrigin
+@CrossOrigin(origins= "*")
 @RestController
-@RequestMapping("/Diet")
+@RequestMapping("/Diet") 
 public class DietController {
 
 	private final DietService dietService;
 	private final PlayerService playerService;
-	private final UserService userService;
+	private final DailyService dailyService;
 
 	@Autowired
-	public DietController(DietService dietService, PlayerService playerService, UserService userService) {
+	public DietController(DietService dietService, PlayerService playerService, DailyService dailyService) {
 		this.dietService = dietService;
 		this.playerService = playerService;
-		this.userService = userService;
+		this.dailyService = dailyService;
 	}
 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
-	private DietDTO visualDiet(@RequestParam(value = "playerId") int idPlayer){
-	
-		//request.setAttribute("idPlayer", idPlayer);
-		PlayerDTO player = playerService.getPlayerDTOById(idPlayer);
-		int idDiet = player.getIdDiet();
-		DietDTO dietDTO = new DietDTO();
-		dietDTO = dietService.getDietDTOById(idDiet);
-		return dietDTO;
+	private List<DailyDTO> visualDiet(@RequestParam(value = "playerId") int idPlayer) {
+		PlayerDTO playerDTO = playerService.getPlayerDTOById(idPlayer);
+		int idDiet = playerDTO.getIdDiet();
+		Diet diet = new Diet();
+		diet.setIdDiet(idDiet);
+		List<DailyDTO> listDaily = dailyService.findAllByDiet(diet);
+		return listDaily;	
 	}
-
+	
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public DietDTO insert(@RequestParam(value = "dietId") int idDiet,
-			@RequestParam(value = "monday") String monday,
-			@RequestParam(value = "tuesday") String tuesday,
-			@RequestParam(value = "wednesday") String wednesday,
-			@RequestParam(value = "thursday") String thursday,
-			@RequestParam(value = "friday") String friday,
-			@RequestParam(value = "saturday") String saturday,
-			@RequestParam(value = "sunday") String sunday) {
+	public boolean updateDay(@RequestParam(value = "idDay") int idDay,@RequestParam(value = "breakfast") String breakfast, 
+			@RequestParam(value = "snack") String snack, @RequestParam(value = "lunch") String lunch, 
+			@RequestParam(value = "snackAfternoon") String snackAfternoon, @RequestParam(value = "dinner") String dinner) {
+
+		DailyDTO dailyDTO = new DailyDTO();
+		System.out.println("yaaaaa " + breakfast);
+		dailyDTO.setIdDay(idDay);
+		dailyDTO.setBreakfast(breakfast);
+		dailyDTO.setSnack(snack);
+		dailyDTO.setLunch(lunch);
+		dailyDTO.setSnackAfternoon(snackAfternoon);
+		dailyDTO.setDinner(dinner);
 		
-		DietDTO dietDTO = dietService.getDietDTOById(idDiet);
-		dietDTO.setMonday(monday);
-		dietDTO.setTuesday(tuesday);
-		dietDTO.setWednesday(wednesday);
-		dietDTO.setThursday(thursday);
-		dietDTO.setFriday(friday);
-		dietDTO.setSaturday(saturday);
-		dietDTO.setSunday(sunday);
-		dietService.insertDiet(dietDTO);
-		//request.setAttribute("userListDTO", userService.getListaUserDTO());
-		return dietDTO;
+		return dailyService.updateDay(ConverterDaily.toEntity(dailyDTO));
+		
 	}
-	
-/*
-	@RequestMapping(value = "/noDiet", method = RequestMethod.GET)
-	public String noDiet(HttpServletRequest request) {
-		int idDiet = (int) request.getAttribute("idDiet");
-		request.setAttribute("idDiet", idDiet);
-		DietDTO dietDTO = dietService.getDietDTOById(idDiet);
-		
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		dietDTO.setMonday("free");
-		
-		dietService.updateDiet(dietDTO);
-		
-		return "homeNutritionist";
-	}
-*/
-	
-/*	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(HttpServletRequest request) {
-		int idDiet = (int) request.getAttribute("idDiet");
-		request.setAttribute("idDiet", idDiet);
+
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public void delete(@RequestParam(value = "dietId") int idDiet) {
 		dietService.deleteDietById(idDiet);
-		
-		return "trainerBiomedicalData";
-
 	}
-*/
 
-	
 }

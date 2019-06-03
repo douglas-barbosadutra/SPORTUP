@@ -21,7 +21,7 @@ import it.contrader.services.PerformanceService;
 import it.contrader.services.PlayerService;
 import it.contrader.services.UserService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/Performance")
 public class PerformanceController {

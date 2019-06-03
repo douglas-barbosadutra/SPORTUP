@@ -13,15 +13,6 @@ public class ConverterDiet {
 		if (diet != null) {
 			dietDTO = new DietDTO();
 			dietDTO.setIdDiet(diet.getIdDiet());
-			dietDTO.setMonday(diet.getMonday());
-			dietDTO.setTuesday(diet.getTuesday());
-			dietDTO.setWednesday(diet.getWednesday());
-			dietDTO.setThursday(diet.getThursday());
-			dietDTO.setFriday(diet.getFriday());
-			dietDTO.setSaturday(diet.getSaturday());
-			dietDTO.setSunday(diet.getSunday());
-			//dietDTO.setIdDietC(trainingCard.getIdDietC());
-			
 		}
 		return dietDTO;
 	}
@@ -31,16 +22,8 @@ public class ConverterDiet {
 		if (dietDTO != null) {
 			diet = new Diet();
 			diet.setIdDiet(dietDTO.getIdDiet());
-			diet.setMonday(dietDTO.getMonday());
-			diet.setTuesday(dietDTO.getTuesday());
-			diet.setWednesday(dietDTO.getWednesday());
-			diet.setThursday(dietDTO.getThursday());
-			diet.setFriday(dietDTO.getFriday());
-			diet.setSaturday(dietDTO.getSaturday());
-			diet.setSunday(dietDTO.getSunday());
-			//diet.setIdDietC(dietDTO.getIdDietC());
-			
 		}
+
 		return diet;
 	}
 

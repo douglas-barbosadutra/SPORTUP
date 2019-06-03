@@ -16,7 +16,9 @@ import it.contrader.dto.DietDTO;
 import it.contrader.dto.PerformanceDTO;
 import it.contrader.dto.PlayerDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.Daily;
 import it.contrader.services.BiomedicalDataService;
+import it.contrader.services.DailyService;
 import it.contrader.services.DietService;
 import it.contrader.services.PerformanceService;
 import it.contrader.services.PlayerService;
@@ -34,14 +36,16 @@ public class UserController {
 	private final BiomedicalDataService biomedicalDataService;
 	private final PerformanceService performanceService;
 	private final DietService dietService;
+	private final DailyService dailyService;
 	
 	@Autowired
-	public UserController(UserService userService, PlayerService playerService, BiomedicalDataService biomedicalDataService, PerformanceService performanceService, DietService dietService) {
+	public UserController(UserService userService, PlayerService playerService, BiomedicalDataService biomedicalDataService, PerformanceService performanceService, DietService dietService, DailyService dailyService) {
 		this.userService = userService;
 		this.playerService = playerService;
 		this.biomedicalDataService = biomedicalDataService;
 		this.performanceService = performanceService;
 		this.dietService = dietService;
+		this.dailyService = dailyService;
 	}
 		
 	@RequestMapping(value = "/userManagement", method = RequestMethod.GET)
@@ -68,6 +72,7 @@ public class UserController {
 			
 			int idUser = userObj.getIdUser();
 			
+			/** CREA BIO DATA **/
 			BiomedicalDataDTO bioDTO = new BiomedicalDataDTO();
 			biomedicalDataService.insertBiomedicalData(bioDTO);
 			List<BiomedicalDataDTO> listBioDTO = biomedicalDataService.getListaBiomedicalDataDTO();
@@ -75,15 +80,32 @@ public class UserController {
 			for (int i=0; i<listBioDTO.size(); i++) {
 				if(listBioDTO.get(i).getIdBiomedicalData()>idBio) idBio = listBioDTO.get(i).getIdBiomedicalData();
 			}
-						
+			
+			/** CREA DIETA **/			
 			DietDTO dietDTO = new DietDTO();
 			dietService.insertDiet(dietDTO);
 			List<DietDTO> listDietDTO = dietService.getListaDietDTO();
 			int idDiet = 0;
 			for (int i=0; i<listDietDTO.size(); i++) {
 				if(listDietDTO.get(i).getIdDiet()>idDiet) idDiet = listDietDTO.get(i).getIdDiet();
-			}			
+			}
+			System.out.println("iddiet " + idDiet);
+			Daily daily1 = new Daily("monday", idDiet);
+			Daily daily2 = new Daily("tuesday", idDiet);
+			Daily daily3 = new Daily("wednesday", idDiet);
+			Daily daily4 = new Daily("thursday", idDiet);
+			Daily daily5 = new Daily("friday", idDiet);
+			Daily daily6 = new Daily("saturday", idDiet);
+			Daily daily7 = new Daily("sunday", idDiet);
+			dailyService.insertDaily(daily1);
+			dailyService.insertDaily(daily2);
+			dailyService.insertDaily(daily3);
+			dailyService.insertDaily(daily4);
+			dailyService.insertDaily(daily5);
+			dailyService.insertDaily(daily6);
+			dailyService.insertDaily(daily7);
 			
+			/** CREA PERFORMANCE **/
 			PerformanceDTO perfDTO = new PerformanceDTO();
 			performanceService.insertPerformance(perfDTO);
 			List<PerformanceDTO> listPerfDTO = performanceService.getListaPerformanceDTO();
@@ -105,11 +127,13 @@ public class UserController {
 		}
 	}
 		
-	@RequestMapping(value = "/creaUser", method = RequestMethod.POST)
-	public void insertUser(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+	@RequestMapping(value = "/creaUser", method = RequestMethod.GET)
+	public UserDTO insertUser(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
 		String type = "pending";
+		System.out.println("AAAOOOOOOOOOOOOOOOOOOOO");
 		UserDTO userObj = new UserDTO( username, password, type);
 		userService.insertUser(userObj);
+		return userObj;
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -121,5 +145,13 @@ public class UserController {
 		}
 		return null;
 	}
+	
+	@RequestMapping(value = "/getUser", method = RequestMethod.GET)
+	public UserDTO loginControl(@RequestParam(value = "idUser") int id) {
+		final UserDTO userDTO = userService.getUserDTOById(id);
+		return userDTO;
+	}
+	
+	
 
 }

@@ -20,7 +20,7 @@ import it.contrader.services.BiomedicalDataService;
 import it.contrader.services.PlayerService;
 import it.contrader.services.UserService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/BiomedicalData")
 public class BiomedicalDataController {

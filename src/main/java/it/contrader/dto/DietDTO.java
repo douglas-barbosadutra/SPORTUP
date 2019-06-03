@@ -1,11 +1,6 @@
 package it.contrader.dto;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
+import it.contrader.model.Daily;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,21 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DietDTO {
 
-	
 	private Integer idDiet;
 
-	private String monday;
-	
-	private String tuesday;
+	private Daily daily;
 
-	private String wednesday;
-	
-	private String thursday;
-	
-	private String friday;
-	
-	private String saturday;
-		
-	private String sunday;
-	
 }

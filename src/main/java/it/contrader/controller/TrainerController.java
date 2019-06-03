@@ -24,7 +24,7 @@ import it.contrader.services.BiomedicalDataService;
 import it.contrader.services.PerformanceService;
 import it.contrader.services.PlayerService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @Controller
 @RequestMapping("/Trainer")
 public class TrainerController {

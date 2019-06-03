@@ -20,7 +20,7 @@ import it.contrader.dto.TrainingDTO;
 import it.contrader.services.TeamService;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/Team")
 public class TeamController {

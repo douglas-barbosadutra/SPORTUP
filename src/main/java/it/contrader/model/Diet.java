@@ -2,12 +2,14 @@ package it.contrader.model;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.*;
-import org.springframework.lang.Nullable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,32 +19,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
 public class Diet {
 
 	@Id
 	@Column(name = "idDiet")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idDiet;
+	
+//	@OneToMany(mappedBy="diet")
+//	private List<Daily> daily;	
 
-	@Column(name = "monday")
-	private String monday;
-
-	@Column(name = "tuesday")
-	private String tuesday;
-
-	@Column(name = "wednesday")
-	private String wednesday;
-	
-	@Column(name = "thursday")
-	private String thursday;
-	
-	@Column(name = "friday")
-	private String friday;
-	
-	@Column(name = "saturday")
-	private String saturday;
-	
-	@Column(name = "sunday")
-	private String sunday;
-	
 }
