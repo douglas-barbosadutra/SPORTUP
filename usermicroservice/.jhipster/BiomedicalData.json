@@ -1,0 +1,39 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "hearthbeat",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "bloodPressure",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "weight",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fatMass",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "fatFreeMass",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20190606212617",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "biomedical_data",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "usermicroservice"
+}

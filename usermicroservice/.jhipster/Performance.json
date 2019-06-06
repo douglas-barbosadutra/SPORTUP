@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "maxCorsaMin",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "maxFlessioni",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "maxAddominali",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20190606212846",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "performance",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "usermicroservice"
+}

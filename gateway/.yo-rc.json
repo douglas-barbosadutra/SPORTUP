@@ -21,10 +21,10 @@
     "serviceDiscoveryType": "consul",
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "be73a45fa99551feae6ab86a9014c6b940dbe51c",
+    "jwtSecretKey": "e53cfe10c03b8004beaf11064dd01a389ecc337f",
     "clientFramework": "angularX",
     "useSass": false,
-    "clientPackageManager": "npm",
+    "clientPackageManager": "yarn",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
     "enableTranslation": false
