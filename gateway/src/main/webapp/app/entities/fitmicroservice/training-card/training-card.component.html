@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span>Training Cards</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-training-card" [routerLink]="['/training-card/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Training Card
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="trainingCards">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="monday"><span>Monday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tuesday"><span>Tuesday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="wednesday"><span>Wednesday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="thursday"><span>Thursday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="friday"><span>Friday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="saturday"><span>Saturday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sunday"><span>Sunday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="idPlayer"><span>Id Player</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let trainingCard of trainingCards ;trackBy: trackId">
+                <td><a [routerLink]="['/training-card', trainingCard.id, 'view' ]">{{trainingCard.id}}</a></td>
+                <td>{{trainingCard.monday}}</td>
+                <td>{{trainingCard.tuesday}}</td>
+                <td>{{trainingCard.wednesday}}</td>
+                <td>{{trainingCard.thursday}}</td>
+                <td>{{trainingCard.friday}}</td>
+                <td>{{trainingCard.saturday}}</td>
+                <td>{{trainingCard.sunday}}</td>
+                <td>{{trainingCard.idPlayer}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/training-card', trainingCard.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/training-card', trainingCard.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'training-card/'+ trainingCard.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="trainingCards && trainingCards.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="trainingCard">
+            <h2><span>Training Card</span> {{trainingCard.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Monday</span></dt>
+                <dd>
+                    <span>{{trainingCard.monday}}</span>
+                </dd>
+                <dt><span>Tuesday</span></dt>
+                <dd>
+                    <span>{{trainingCard.tuesday}}</span>
+                </dd>
+                <dt><span>Wednesday</span></dt>
+                <dd>
+                    <span>{{trainingCard.wednesday}}</span>
+                </dd>
+                <dt><span>Thursday</span></dt>
+                <dd>
+                    <span>{{trainingCard.thursday}}</span>
+                </dd>
+                <dt><span>Friday</span></dt>
+                <dd>
+                    <span>{{trainingCard.friday}}</span>
+                </dd>
+                <dt><span>Saturday</span></dt>
+                <dd>
+                    <span>{{trainingCard.saturday}}</span>
+                </dd>
+                <dt><span>Sunday</span></dt>
+                <dd>
+                    <span>{{trainingCard.sunday}}</span>
+                </dd>
+                <dt><span>Id Player</span></dt>
+                <dd>
+                    <span>{{trainingCard.idPlayer}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/training-card', trainingCard.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

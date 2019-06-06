@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="diet">
+            <h2><span>Diet</span> {{diet.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Day</span></dt>
+                <dd>
+                    <span>{{diet.day}}</span>
+                </dd>
+                <dt><span>Breakfast</span></dt>
+                <dd>
+                    <span>{{diet.breakfast}}</span>
+                </dd>
+                <dt><span>Snack</span></dt>
+                <dd>
+                    <span>{{diet.snack}}</span>
+                </dd>
+                <dt><span>Lunch</span></dt>
+                <dd>
+                    <span>{{diet.lunch}}</span>
+                </dd>
+                <dt><span>Snack Afternoon</span></dt>
+                <dd>
+                    <span>{{diet.snackAfternoon}}</span>
+                </dd>
+                <dt><span>Dinner</span></dt>
+                <dd>
+                    <span>{{diet.dinner}}</span>
+                </dd>
+                <dt><span>Id Player</span></dt>
+                <dd>
+                    <span>{{diet.idPlayer}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/diet', diet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
