@@ -12,12 +12,6 @@ public class PlayerDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Integer idBiomedicalData;
-
-    @NotNull
-    private Integer idPerformance;
-
-    @NotNull
     private Integer idUser;
 
     private Long biomedicalDataId;
@@ -30,22 +24,6 @@ public class PlayerDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getIdBiomedicalData() {
-        return idBiomedicalData;
-    }
-
-    public void setIdBiomedicalData(Integer idBiomedicalData) {
-        this.idBiomedicalData = idBiomedicalData;
-    }
-
-    public Integer getIdPerformance() {
-        return idPerformance;
-    }
-
-    public void setIdPerformance(Integer idPerformance) {
-        this.idPerformance = idPerformance;
     }
 
     public Integer getIdUser() {
@@ -97,8 +75,6 @@ public class PlayerDTO implements Serializable {
     public String toString() {
         return "PlayerDTO{" +
             "id=" + getId() +
-            ", idBiomedicalData=" + getIdBiomedicalData() +
-            ", idPerformance=" + getIdPerformance() +
             ", idUser=" + getIdUser() +
             ", biomedicalData=" + getBiomedicalDataId() +
             ", performance=" + getPerformanceId() +

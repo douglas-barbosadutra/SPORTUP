@@ -22,14 +22,6 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="id_biomedical_data" type="integer">
-                <constraints nullable="false" />
-            </column>
-
-            <column name="id_performance" type="integer">
-                <constraints nullable="false" />
-            </column>
-
             <column name="id_user" type="integer">
                 <constraints nullable="false" />
             </column>

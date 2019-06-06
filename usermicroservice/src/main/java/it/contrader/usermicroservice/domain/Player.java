@@ -21,14 +21,6 @@ public class Player implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "id_biomedical_data", nullable = false)
-    private Integer idBiomedicalData;
-
-    @NotNull
-    @Column(name = "id_performance", nullable = false)
-    private Integer idPerformance;
-
-    @NotNull
     @Column(name = "id_user", nullable = false)
     private Integer idUser;
 
@@ -49,32 +41,6 @@ public class Player implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getIdBiomedicalData() {
-        return idBiomedicalData;
-    }
-
-    public Player idBiomedicalData(Integer idBiomedicalData) {
-        this.idBiomedicalData = idBiomedicalData;
-        return this;
-    }
-
-    public void setIdBiomedicalData(Integer idBiomedicalData) {
-        this.idBiomedicalData = idBiomedicalData;
-    }
-
-    public Integer getIdPerformance() {
-        return idPerformance;
-    }
-
-    public Player idPerformance(Integer idPerformance) {
-        this.idPerformance = idPerformance;
-        return this;
-    }
-
-    public void setIdPerformance(Integer idPerformance) {
-        this.idPerformance = idPerformance;
     }
 
     public Integer getIdUser() {
@@ -141,8 +107,6 @@ public class Player implements Serializable {
     public String toString() {
         return "Player{" +
             "id=" + getId() +
-            ", idBiomedicalData=" + getIdBiomedicalData() +
-            ", idPerformance=" + getIdPerformance() +
             ", idUser=" + getIdUser() +
             "}";
     }

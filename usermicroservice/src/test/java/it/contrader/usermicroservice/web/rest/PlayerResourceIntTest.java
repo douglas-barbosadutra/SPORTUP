@@ -44,12 +44,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = UsermicroserviceApp.class)
 public class PlayerResourceIntTest {
 
-    private static final Integer DEFAULT_ID_BIOMEDICAL_DATA = 1;
-    private static final Integer UPDATED_ID_BIOMEDICAL_DATA = 2;
-
-    private static final Integer DEFAULT_ID_PERFORMANCE = 1;
-    private static final Integer UPDATED_ID_PERFORMANCE = 2;
-
     private static final Integer DEFAULT_ID_USER = 1;
     private static final Integer UPDATED_ID_USER = 2;
 
@@ -99,8 +93,6 @@ public class PlayerResourceIntTest {
      */
     public static Player createEntity(EntityManager em) {
         Player player = new Player()
-            .idBiomedicalData(DEFAULT_ID_BIOMEDICAL_DATA)
-            .idPerformance(DEFAULT_ID_PERFORMANCE)
             .idUser(DEFAULT_ID_USER);
         // Add required entity
         BiomedicalData biomedicalData = BiomedicalDataResourceIntTest.createEntity(em);
@@ -136,8 +128,6 @@ public class PlayerResourceIntTest {
         List<Player> playerList = playerRepository.findAll();
         assertThat(playerList).hasSize(databaseSizeBeforeCreate + 1);
         Player testPlayer = playerList.get(playerList.size() - 1);
-        assertThat(testPlayer.getIdBiomedicalData()).isEqualTo(DEFAULT_ID_BIOMEDICAL_DATA);
-        assertThat(testPlayer.getIdPerformance()).isEqualTo(DEFAULT_ID_PERFORMANCE);
         assertThat(testPlayer.getIdUser()).isEqualTo(DEFAULT_ID_USER);
     }
 
@@ -159,44 +149,6 @@ public class PlayerResourceIntTest {
         // Validate the Player in the database
         List<Player> playerList = playerRepository.findAll();
         assertThat(playerList).hasSize(databaseSizeBeforeCreate);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdBiomedicalDataIsRequired() throws Exception {
-        int databaseSizeBeforeTest = playerRepository.findAll().size();
-        // set the field null
-        player.setIdBiomedicalData(null);
-
-        // Create the Player, which fails.
-        PlayerDTO playerDTO = playerMapper.toDto(player);
-
-        restPlayerMockMvc.perform(post("/api/players")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(playerDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Player> playerList = playerRepository.findAll();
-        assertThat(playerList).hasSize(databaseSizeBeforeTest);
-    }
-
-    @Test
-    @Transactional
-    public void checkIdPerformanceIsRequired() throws Exception {
-        int databaseSizeBeforeTest = playerRepository.findAll().size();
-        // set the field null
-        player.setIdPerformance(null);
-
-        // Create the Player, which fails.
-        PlayerDTO playerDTO = playerMapper.toDto(player);
-
-        restPlayerMockMvc.perform(post("/api/players")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(playerDTO)))
-            .andExpect(status().isBadRequest());
-
-        List<Player> playerList = playerRepository.findAll();
-        assertThat(playerList).hasSize(databaseSizeBeforeTest);
     }
 
     @Test
@@ -229,8 +181,6 @@ public class PlayerResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(player.getId().intValue())))
-            .andExpect(jsonPath("$.[*].idBiomedicalData").value(hasItem(DEFAULT_ID_BIOMEDICAL_DATA)))
-            .andExpect(jsonPath("$.[*].idPerformance").value(hasItem(DEFAULT_ID_PERFORMANCE)))
             .andExpect(jsonPath("$.[*].idUser").value(hasItem(DEFAULT_ID_USER)));
     }
     
@@ -246,8 +196,6 @@ public class PlayerResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(player.getId().intValue()))
-            .andExpect(jsonPath("$.idBiomedicalData").value(DEFAULT_ID_BIOMEDICAL_DATA))
-            .andExpect(jsonPath("$.idPerformance").value(DEFAULT_ID_PERFORMANCE))
             .andExpect(jsonPath("$.idUser").value(DEFAULT_ID_USER));
     }
     @Test
@@ -271,8 +219,6 @@ public class PlayerResourceIntTest {
         // Disconnect from session so that the updates on updatedPlayer are not directly saved in db
         em.detach(updatedPlayer);
         updatedPlayer
-            .idBiomedicalData(UPDATED_ID_BIOMEDICAL_DATA)
-            .idPerformance(UPDATED_ID_PERFORMANCE)
             .idUser(UPDATED_ID_USER);
         PlayerDTO playerDTO = playerMapper.toDto(updatedPlayer);
 
@@ -285,8 +231,6 @@ public class PlayerResourceIntTest {
         List<Player> playerList = playerRepository.findAll();
         assertThat(playerList).hasSize(databaseSizeBeforeUpdate);
         Player testPlayer = playerList.get(playerList.size() - 1);
-        assertThat(testPlayer.getIdBiomedicalData()).isEqualTo(UPDATED_ID_BIOMEDICAL_DATA);
-        assertThat(testPlayer.getIdPerformance()).isEqualTo(UPDATED_ID_PERFORMANCE);
         assertThat(testPlayer.getIdUser()).isEqualTo(UPDATED_ID_USER);
     }
 
