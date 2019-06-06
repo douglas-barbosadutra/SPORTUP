@@ -1,0 +1,46 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "day",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "breakfast",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "snack",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lunch",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "snackAfternoon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dinner",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idPlayer",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20190606143055",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "diet",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "fitmicroservice"
+}

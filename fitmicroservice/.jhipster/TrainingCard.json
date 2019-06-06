@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "monday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tuesday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wednesday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "thursday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "friday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "saturday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sunday",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idPlayer",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20190606141958",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "training_card",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "fitmicroservice"
+}
