@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="biomedicalData">
+            <h2><span>Biomedical Data</span> {{biomedicalData.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Hearthbeat</span></dt>
+                <dd>
+                    <span>{{biomedicalData.hearthbeat}}</span>
+                </dd>
+                <dt><span>Blood Pressure</span></dt>
+                <dd>
+                    <span>{{biomedicalData.bloodPressure}}</span>
+                </dd>
+                <dt><span>Height</span></dt>
+                <dd>
+                    <span>{{biomedicalData.height}}</span>
+                </dd>
+                <dt><span>Weight</span></dt>
+                <dd>
+                    <span>{{biomedicalData.weight}}</span>
+                </dd>
+                <dt><span>Fat Mass</span></dt>
+                <dd>
+                    <span>{{biomedicalData.fatMass}}</span>
+                </dd>
+                <dt><span>Fat Free Mass</span></dt>
+                <dd>
+                    <span>{{biomedicalData.fatFreeMass}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/biomedical-data', biomedicalData.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

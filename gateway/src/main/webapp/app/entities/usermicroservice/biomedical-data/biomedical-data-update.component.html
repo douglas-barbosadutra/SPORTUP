@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-biomedical-data-heading">Create or edit a Biomedical Data</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!biomedicalData.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="biomedicalData.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hearthbeat">Hearthbeat</label>
+                    <input type="number" class="form-control" name="hearthbeat" id="field_hearthbeat"
+                        [(ngModel)]="biomedicalData.hearthbeat" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bloodPressure">Blood Pressure</label>
+                    <input type="number" class="form-control" name="bloodPressure" id="field_bloodPressure"
+                        [(ngModel)]="biomedicalData.bloodPressure" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_height">Height</label>
+                    <input type="number" class="form-control" name="height" id="field_height"
+                        [(ngModel)]="biomedicalData.height" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_weight">Weight</label>
+                    <input type="number" class="form-control" name="weight" id="field_weight"
+                        [(ngModel)]="biomedicalData.weight" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fatMass">Fat Mass</label>
+                    <input type="number" class="form-control" name="fatMass" id="field_fatMass"
+                        [(ngModel)]="biomedicalData.fatMass" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_fatFreeMass">Fat Free Mass</label>
+                    <input type="number" class="form-control" name="fatFreeMass" id="field_fatFreeMass"
+                        [(ngModel)]="biomedicalData.fatFreeMass" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-player-heading">Create or edit a Player</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!player.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="player.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_idUser">Id User</label>
+                    <input type="number" class="form-control" name="idUser" id="field_idUser"
+                        [(ngModel)]="player.idUser" required/>
+                    <div [hidden]="!(editForm.controls.idUser?.dirty && editForm.controls.idUser?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.idUser?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.idUser?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_biomedicalData">Biomedical Data</label>
+                    <select class="form-control" id="field_biomedicalData" name="biomedicalData" [(ngModel)]="player.biomedicalDataId" required>
+                        <option *ngIf="!editForm.value.biomedicalData" [ngValue]="null" selected></option>
+                        <option [ngValue]="biomedicalDataOption.id" *ngFor="let biomedicalDataOption of biomedicaldata; trackBy: trackBiomedicalDataById">{{biomedicalDataOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.biomedicalData?.dirty && editForm.controls.biomedicalData?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.biomedicalData?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_performance">Performance</label>
+                    <select class="form-control" id="field_performance" name="performance" [(ngModel)]="player.performanceId" required>
+                        <option *ngIf="!editForm.value.performance" [ngValue]="null" selected></option>
+                        <option [ngValue]="performanceOption.id" *ngFor="let performanceOption of performances; trackBy: trackPerformanceById">{{performanceOption.id}}</option>
+                    </select>
+                </div>
+                <div [hidden]="!(editForm.controls.performance?.dirty && editForm.controls.performance?.invalid)">
+                    <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.performance?.errors?.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
