@@ -8,6 +8,8 @@ import { Player } from 'src/app/models/Player';
 import { User } from 'src/app/models/User';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { Training } from 'src/app/models/Training';
+import { BiomedicalData } from 'src/app/models/BiomedicalData';
+import { Performance } from 'src/app/models/Performance';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import { Daily } from 'src/app/models/Daily';
@@ -28,6 +30,10 @@ export class HomePlayerComponent implements OnInit {
   day: number;
   diet: Daily[];
   dailyDiet: Daily;
+  biomedicalData: BiomedicalData;
+  perf: Performance;
+
+
   public lineChartData: ChartDataSets[] = [
     { data: [65, 59, 80, 81], label: 'peso' },
     { data: [28, 48, 40, 19], label: 'massa grassa' },
@@ -123,6 +129,26 @@ export class HomePlayerComponent implements OnInit {
                 var b = this.diet.filter(e => (e.idDay)%7 === this.day);
                 this.dailyDiet = b[0];  
                 console.log(this.dailyDiet);
+              }
+     });
+
+     this.playerService.getBiomedicalData(this.idUser).subscribe((response) => {
+      console.log('Biomedical:Risposta ricevuta');
+            if (response != null) {
+                this.biomedicalData=response;
+                //var b = this.diet.filter(e => (e.idDay)%7 === this.day);
+                //this.dailyDiet = b[0];  
+                console.log(this.biomedicalData);
+              }
+     });
+
+     this.playerService.getPerformance(this.idUser).subscribe((response) => {
+      console.log('Performance:Risposta ricevuta');
+            if (response != null) {
+                this.perf=response;
+                //var b = this.diet.filter(e => (e.idDay)%7 === this.day);
+                //this.dailyDiet = b[0];  
+                console.log(this.performance);
               }
      });
 
