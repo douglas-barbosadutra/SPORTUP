@@ -1,0 +1,62 @@
+
+<body>
+
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-9">
+
+               <!--ci va lo sfondo-->
+
+            </div>
+
+            
+
+            <div class="col-sm-3">
+
+                <div id="contenitore">
+
+                    <h2 class="title">SPORTUP</h2>
+
+                    <p>Is the future</p>
+
+                </div>
+
+
+
+                <form class="form-horizontal" action="Login.php" method = "POST">
+
+                    <div class="input-container">
+
+                        <i class="fa fa-user icon"></i>
+
+                        <input type="textarea" class="form-control" name = "username" placeholder="Enter username" [(ngModel)]="loginDTO.username">
+
+                    </div>
+
+                    
+
+                    <div class="input-container">
+
+                        <i class="fa fa-key icon"></i>
+
+                        <input type="password" class="form-control" name = "password" placeholder="Enter password" [(ngModel)]="loginDTO.password">
+
+                    </div>
+
+                    <button id="login" class="btn btn-primary" (click)="login()">Login</button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>

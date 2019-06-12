@@ -1,0 +1,16 @@
+<body>
+    <div>
+    <form> 
+        <div>
+            <label>Username</label> <input type="text" name="username" placeholder="Username" [(ngModel)]="username">
+        </div>
+        <div>
+            <label>Password</label> <input type="password" name="password1" placeholder="Insert Password" [(ngModel)]="password1">
+        </div>
+        <div>
+            <label>Repeat Password</label> <input type="password" name="password2" placeholder="Insert Password Again" [(ngModel)]="password2">
+        </div>  
+        <button type="submit" (click)="register()">sign up</button>
+    </form>
+    </div>
+</body>

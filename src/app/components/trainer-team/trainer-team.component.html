@@ -1,0 +1,31 @@
+<h1>LISTA TEAMS</h1>
+
+  <tr class="teams" *ngFor="let team of teams; let i = index">
+
+  <td>{{teams[i].idTeam}}</td>
+
+  <td>{{teams[i].info}}</td>
+
+  </tr>
+
+  <form #f="ngForm">
+    <div class="form-group">
+        <label>idTeam</label> <input class="au-input au-input--full" type="idTeam" name="idTeam"
+            placeholder="idTeam" ngModel>
+    </div>
+    <div class="form-group">
+        <label>info</label> <input class="au-input au-input--full" type="info" name="info"
+            placeholder="info" ngModel>
+    </div>
+    
+    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" (click)="updateTeam(f)">UPDATE</button>
+</form>
+
+<form>
+    <label>info</label> <input class="au-input au-input--full" type="info" name="info"
+        placeholder="addInfo" [(ngModel)]="info">
+  
+  <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit" (click)="createTeam(f)">CREATE TEAM</button>
+
+</form>
+

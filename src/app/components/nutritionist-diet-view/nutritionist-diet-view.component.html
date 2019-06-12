@@ -1,0 +1,51 @@
+<h1>LISTA DIET</h1>
+
+<table class="table"> 
+  <tr>
+    
+    <th>DAY</th>
+
+    <th>BREAKFAST</th>
+
+    <th>SNACK</th>
+
+    <th>LUNCH</th>
+
+    <th>SNACKAFTERNOON</th>
+
+    <th>DINNER</th>
+
+  </tr>
+
+  <tr class="dietList" *ngFor="let daily of dietList; let i = index">
+
+    <td>{{dietList[i].day}}</td>
+
+    <td>{{dietList[i].breakfast}}</td>
+
+    <td>{{dietList[i].snack}}</td>
+
+    <td>{{dietList[i].lunch}}</td>
+
+    <td>{{dietList[i].snackAfternoon}}</td>
+    
+    <td>{{dietList[i].dinner}}</td>
+
+    <button (click)="showDay(dietList[i])">MODIFICA</button>
+
+  </tr>
+</table>
+
+<form>
+  <div *ngIf="day">
+    <h4>Modifica Dieta del Giorno</h4>
+      <div><label>Colazione</label> <input type="text" name="breakfast" value={{day.breakfast}} [(ngModel)]="breakfast"></div>
+      <div><label>Spuntino</label> <input type="text" name="snack" value={{day.snack}} [(ngModel)]="snack"></div>
+      <div><label>Pranzo</label> <input type="text" name="lunch" value={{day.lunch}} [(ngModel)]="lunch"></div>
+      <div><label>Merenda</label> <input type="text" name="snackAfternoon" value={{day.snackAfternoon}} [(ngModel)]="snackAfternoon"></div>
+      <div><label>Cena</label> <input type="text" name="dinner" value={{day.dinner}} [(ngModel)]="dinner"></div>
+      <div><input type="hidden" name="idDay" value={{day.idDay}} [(ngModel)]="idDay"></div>
+      <div><input type="hidden" name="day" value={{day.day}} [(ngModel)]="day"></div>
+    <button type="submit" (click)="updateDay()">Update</button>
+  </div>
+</form>
